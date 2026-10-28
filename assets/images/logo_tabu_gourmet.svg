@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Metallic Gold Foil Gradients -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e197"/>
+      <stop offset="25%" stop-color="#d4af37"/>
+      <stop offset="50%" stop-color="#aa771c"/>
+      <stop offset="75%" stop-color="#dfbe5d"/>
+      <stop offset="100%" stop-color="#996515"/>
+    </linearGradient>
+
+    <linearGradient id="goldGradientHori" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="50%" stop-color="#fff2b2"/>
+      <stop offset="100%" stop-color="#aa771c"/>
+    </linearGradient>
+
+    <radialGradient id="centerAura" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#08090d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base (Dark Obsidian) -->
+  <rect width="500" height="500" rx="24" fill="#090a0f"/>
+  <circle cx="250" cy="200" r="180" fill="url(#centerAura)"/>
+
+  <!-- Outer Fine Border Medallion -->
+  <rect x="25" y="25" width="450" height="450" rx="16" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" stroke-opacity="0.4"/>
+  <rect x="33" y="33" width="434" height="434" rx="12" fill="none" stroke="url(#goldGradient)" stroke-width="0.75" stroke-opacity="0.25" stroke-dasharray="4,4"/>
+
+  <!-- Corner Yucatecan Stepped Motifs -->
+  <g stroke="url(#goldGradient)" stroke-width="1.2" fill="none" opacity="0.6">
+    <!-- Top-Left Corner -->
+    <path d="M42,55 H65 V42 M42,68 H78 V42 M42,81 H91 V42" />
+    <!-- Top-Right Corner -->
+    <path d="M458,55 H435 V42 M458,68 H422 V42 M458,81 H409 V42" />
+    <!-- Bottom-Left Corner -->
+    <path d="M42,445 H65 V458 M42,432 H78 V458 M42,419 H91 V458" />
+    <!-- Bottom-Right Corner -->
+    <path d="M458,445 H435 V458 M458,432 H422 V458 M458,419 H409 V458" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CENTRAL ICON: MAYAN ARCH & STYLIZED HABANERO -->
+  <!-- ========================================== -->
+  <g transform="translate(0, -10)">
+    <!-- Stepped Mayan Arch (Arco Falso Maya de Uxmal / Yucatán) -->
+    <path d="
+      M 160, 230 
+      L 160, 185 
+      L 180, 185 
+      L 180, 145 
+      L 205, 145 
+      L 205, 110 
+      L 230, 110 
+      L 230, 80 
+      L 270, 80 
+      L 270, 110 
+      L 295, 110 
+      L 295, 145 
+      L 320, 145 
+      L 320, 185 
+      L 340, 185 
+      L 340, 230" 
+      fill="none" 
+      stroke="url(#goldGradient)" 
+      stroke-width="2" 
+      stroke-linejoin="miter" 
+      stroke-miterlimit="10"/>
+
+    <!-- Inner Stepped Arch Accent Line -->
+    <path d="
+      M 172, 230 
+      L 172, 195 
+      L 192, 195 
+      L 192, 155 
+      L 217, 155 
+      L 217, 120 
+      L 240, 120 
+      L 240, 92 
+      L 260, 92 
+      L 260, 120 
+      L 283, 120 
+      L 283, 155 
+      L 308, 155 
+      L 308, 195 
+      L 328, 195 
+      L 328, 230" 
+      fill="none" 
+      stroke="url(#goldGradient)" 
+      stroke-width="1" 
+      stroke-opacity="0.45" />
+
+    <!-- Stylized Gourmet Habanero Chile (Sober, Elegant, Sculpted Lines) -->
+    <!-- Stem / Pedúnculo curvado -->
+    <path d="M 246, 115 C 244, 98 252, 88 262, 84 C 260, 90 256, 98 252, 115 Z" 
+          fill="url(#goldGradient)" />
+    
+    <!-- Cáliz / Corona del fruto -->
+    <path d="M 234, 120 C 242, 124 258, 124 266, 120 C 263, 126 257, 129 250, 128 C 243, 129 237, 126 234, 120 Z" 
+          fill="url(#goldGradient)" />
+
+    <!-- Habanero Body: Bulbous, lantern-shaped silhouette with organic lobes -->
+    <path d="
+      M 250, 126
+      C 232, 127 214, 142 216, 168
+      C 217, 185 224, 198 234, 210
+      C 241, 218 247, 226 250, 232
+      C 253, 226 259, 218 266, 210
+      C 276, 198 283, 185 284, 168
+      C 286, 142 268, 127 250, 126 Z"
+      fill="#0c0e15" 
+      stroke="url(#goldGradient)" 
+      stroke-width="2.5" />
+
+    <!-- Internal Gourmet Texture Lobes (Pliegues característicos del Habanero Criollo) -->
+    <!-- Central flame-ridge -->
+    <path d="M 250, 128 C 247, 155 246, 185 250, 226" 
+          stroke="url(#goldGradient)" 
+          stroke-width="1.8" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    <!-- Left lobe contour -->
+    <path d="M 235, 134 C 228, 152 228, 178 238, 202" 
+          stroke="url(#goldGradient)" 
+          stroke-width="1.2" 
+          fill="none" 
+          stroke-opacity="0.8" 
+          stroke-linecap="round"/>
+
+    <!-- Right lobe contour -->
+    <path d="M 265, 134 C 272, 152 272, 178 262, 202" 
+          stroke="url(#goldGradient)" 
+          stroke-width="1.2" 
+          fill="none" 
+          stroke-opacity="0.8" 
+          stroke-linecap="round"/>
+
+    <!-- Subtle Golden Ember Drop / Sabor Sagrado -->
+    <circle cx="250" cy="242" r="3" fill="url(#goldGradient)"/>
+    <circle cx="250" cy="242" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="0.8" stroke-opacity="0.5"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- TYPOGRAPHY: MEXICANO, SOBRIO & GOURMET -->
+  <!-- ========================================== -->
+  <g text-anchor="middle">
+    <!-- Regional Origin Tagline -->
+    <text x="250" y="278" 
+          fill="url(#goldGradient)" 
+          font-family="'Playfair Display', Georgia, serif" 
+          font-size="11" 
+          letter-spacing="6" 
+          font-weight="600" 
+          opacity="0.9">
+      PENÍNSULA DE YUCATÁN
+    </text>
+
+    <!-- Fine Decorative Horizontal Rules with Center Diamond -->
+    <path d="M 120, 290 L 230, 290" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+    <polygon points="250,287 254,290 250,293 246,290" fill="url(#goldGradient)"/>
+    <path d="M 270, 290 L 380, 290" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- Main Wordmark: TABÚ -->
+    <text x="250" y="352" 
+          fill="url(#goldGradientHori)" 
+          font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
+          font-size="62" 
+          font-weight="700" 
+          letter-spacing="8" 
+          filter="drop-shadow(0px 2px 8px rgba(0,0,0,0.8))">
+      TABÚ
+    </text>
+
+    <!-- Subtitle: SALSA GOURMET DE ESPECIALIDAD -->
+    <text x="250" y="385" 
+          fill="#f3f4f6" 
+          font-family="'Plus Jakarta Sans', system-ui, sans-serif" 
+          font-size="10.5" 
+          letter-spacing="5" 
+          font-weight="700" 
+          opacity="0.85">
+      SALSA GOURMET DE ESPECIALIDAD
+    </text>
+
+    <!-- Lower Seal & Purity Badges -->
+    <text x="250" y="415" 
+          fill="url(#goldGradient)" 
+          font-family="'Plus Jakarta Sans', system-ui, sans-serif" 
+          font-size="9" 
+          letter-spacing="3" 
+          font-weight="600" 
+          opacity="0.75">
+      INFUSIÓN SAGRADA • LIBRE DE SODIO
+    </text>
+
+    <!-- Bottom Year / Heritage -->
+    <text x="250" y="438" 
+          fill="#6b7280" 
+          font-family="'Plus Jakarta Sans', system-ui, sans-serif" 
+          font-size="8" 
+          letter-spacing="2" 
+          font-weight="600">
+      DESDE 2010 • CDMX
+    </text>
+  </g>
+</svg>
