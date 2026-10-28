@@ -26,8 +26,19 @@ function it(desc, fn) {
 }
 
 // 1. Integridad del Catálogo y Fórmulas
-it('Debe incluir exactamente 5 productos principales en el catálogo', () => {
-  assert.strictEqual(PRODUCTS_DATA.length, 5, 'Deben existir 5 productos definidos');
+it('Debe incluir exactamente 6 productos en el catálogo incluyendo la presentación Pocket $10 MXN', () => {
+  assert.strictEqual(PRODUCTS_DATA.length, 6, 'Deben existir 6 productos definidos');
+});
+
+it('Tabú Pocket Monodosis 15g debe costar $10.00 MXN exactos para conveniencia', () => {
+  const p = PRODUCTS_DATA.find(i => i.id === 'tabu-pocket-15g');
+  assert.ok(p, 'Producto Pocket no encontrado');
+  assert.strictEqual(p.price, 10.00, 'El precio debe ser $10.00 MXN');
+  assert.strictEqual(p.category, 'pocket');
+  assert.strictEqual(p.sodiumFree, true);
+  assert.strictEqual(p.formulaBase50.costoUnitario, 3.95);
+  assert.ok(p.formulaBase50.margen.includes('60.5%'));
+  assert.ok(p.tagline.includes('10 pesos'));
 });
 
 it('Tabú Clásica Frasco debe costar $120 MXN, libre de sodio y con 2 años de anaquel', () => {

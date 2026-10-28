@@ -163,11 +163,56 @@ const PRODUCTS_DATA = [
       margen: '62.7%'
     },
     pairing: 'Pozole, birria, chilaquiles, tortas ahogadas, frijoles charros y guisados caseros.'
+  },
+  {
+    id: 'tabu-pocket-15g',
+    name: 'Tabú Pocket Monodosis',
+    variant: 'Sachet Monodosis Abre-Fácil (15g)',
+    category: 'pocket',
+    price: 10.00,
+    unit: 'Sachet Monodosis 15g',
+    volume: '15 g / 0.5 oz',
+    image: 'assets/images/tabu_pocket_10pesos.jpg',
+    badge: 'CONVENIENCIA $10 MXN',
+    badgeColor: 'emerald',
+    tagline: 'Fuego gourmet al alcance de todos. 10 pesos, cero pretextos.',
+    sodiumFree: true,
+    shelfLife: '12 meses en anaquel',
+    preservation: 'Sachet hermético multicapa metalizado con atmósfera inerte',
+    shortDescription: 'Diseñado para tiendas de conveniencia y fondas: la porción justa de 15g para bañar 3-4 tacos o una torta con nuestra infusión sagrada libre de sodio. Solo $10 MXN.',
+    storytelling: 'Democratizamos la especialidad gastronómica. Disponible al pie de caja en tiendas de conveniencia, tienditas de la esquina y taquerías: un sachet ultra compacto de 15g con muesca de abre-fácil para llevar en la cartera o bolsillo y elevar cualquier comida callejera al nivel de alta cocina por una sola moneda de $10 pesos.',
+    ingredients: 'Aceite de oliva extra virgen prensado en frío, chile habanero seleccionado deshidratado, ajo nacional rostizado a fuego lento, ácido cítrico, ácido ascórbico. LIBRE DE SODIO. SIN SAL AÑADIDA.',
+    hotScale: 8,
+    labelFinish: 'Foil Metalizado Negro Mate con Tipografía Oro Metálico & Muesca Abre-Fácil',
+    formulaBase50: {
+      habaneroFresco: 'Porción individual 15g',
+      ajoMorado: 'Ajo rostizado puro',
+      jamaica: 'No lleva',
+      aceiteOlivaEV: 'Aceite de oliva extra virgen',
+      aditivos: 'Antioxidante natural',
+      costoUnitario: 3.95,
+      precioVenta: 10.00,
+      margen: '60.5%'
+    },
+    pairing: 'Tacos de pastor, suadero, carnitas, tortas, esquites, quesadillas, mariscos y caldos al paso.'
   }
 ];
 
 // Packs Promocionales de Alta Conversión
 const PACKS_DATA = [
+  {
+    id: 'pack-tira-conveniencia',
+    name: 'Tira de Mostrador: 10 Sachets Pocket',
+    description: '10 sobres individuales de Tabú Pocket 15g ($10 c/u) con descuento. Ideal para tu alacena, oficina o para exhibición en tu negocio.',
+    originalPrice: 100.00,
+    price: 85.00,
+    savings: 15.00,
+    badge: 'TIRA CONVENIENCIA - AHORRA $15',
+    image: 'assets/images/tabu_pocket_10pesos.jpg',
+    items: [
+      { id: 'tabu-pocket-15g', qty: 10 }
+    ]
+  },
   {
     id: 'pack-maestro-gourmet',
     name: 'Pack Maestro Tabú Gourmet',
