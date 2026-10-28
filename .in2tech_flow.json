@@ -1,0 +1,67 @@
+{
+  "project_id": "PROJ-SALSA-TABU-GOURMET-V1",
+  "project_name": "salsa-tabu-gourmet",
+  "project_type": "E-Commerce de Especialidad Gastronómica & Alta Conversión (+10,000€ Vanguard Craft)",
+  "workspace_path": "C:\\Users\\in2te\\.gemini\\antigravity\\scratch\\salsa-tabu-gourmet",
+  "last_updated": "2026-10-28T14:10:00.000000",
+  "status": "COMPLETED",
+  "stages": [
+    {
+      "id": "stage-1",
+      "name": "1. Especificación Funcional & Fórmulas CEDA",
+      "status": "COMPLETED",
+      "description": "Fórmulas de 50 frascos (~130g) documentadas con precisión CEDA, cero cajas negras y especificación Gherkin.",
+      "responsible": "DD (Director de Desarrollo)"
+    },
+    {
+      "id": "stage-2",
+      "name": "2. Arquitectura de Datos & Modelos de Venta",
+      "status": "COMPLETED",
+      "description": "products.js y checkout.js con catálogo de 5 productos, cálculo de envío CDMX/Nacional, cupones y generación de folios.",
+      "responsible": "DD & ADS Especialistas"
+    },
+    {
+      "id": "stage-3",
+      "name": "3. Ejecución Vanguard Web (+10,000€ Standard)",
+      "status": "COMPLETED",
+      "description": "index.html, style.css y app.js con 3D tilt, magnetic spotlight, carrusel documental 2010 vs 2026 y drawer reactivo.",
+      "responsible": "ADS Frontend & Visual Artists"
+    },
+    {
+      "id": "stage-4",
+      "name": "4. Control por 3 Puertas (Gates 1, 2, 3)",
+      "status": "COMPLETED",
+      "description": "Gate 1: 11/11 tests deterministas PASS (tests/store.test.js). Gate 2: CONFORME AS (SECURITY.md). Gate 3: CONFORME AA (AUDIT.md).",
+      "responsible": "AS-Security & AA-Auditor"
+    },
+    {
+      "id": "stage-5",
+      "name": "5. Entrega & Sello de Conformidad",
+      "status": "COMPLETED",
+      "description": "Proyecto listo para producción y apertura directa en navegador.",
+      "responsible": "FS Guardian (QA)"
+    }
+  ],
+  "assigned_agents": [
+    {
+      "agent_id": "DD",
+      "role": "Director de Desarrollo / Orquestador",
+      "status": "COMPLETED"
+    },
+    {
+      "agent_id": "ADS-Frontend",
+      "role": "Desarrollador Especialista en E-Commerce & Craft",
+      "status": "COMPLETED"
+    },
+    {
+      "agent_id": "AS-Security",
+      "role": "Agente de Seguridad (Gate 2)",
+      "status": "COMPLETED"
+    },
+    {
+      "agent_id": "AA-Auditor",
+      "role": "Agente Auditor de Trazabilidad (Gate 3)",
+      "status": "COMPLETED"
+    }
+  ]
+}
