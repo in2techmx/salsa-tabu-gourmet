@@ -658,3 +658,24 @@ function showToast(message) {
     toast.classList.remove('active');
   }, 3200);
 }
+
+/**
+ * 11. Control de Spots Comerciales de Video
+ */
+window.toggleSpotVideo = function(btn) {
+  const card = btn.closest('.spot-card');
+  if (!card) return;
+  const video = card.querySelector('video');
+  if (!video) return;
+
+  if (video.paused) {
+    video.play();
+    btn.textContent = '❚❚';
+    btn.title = 'Pausar Video';
+  } else {
+    video.pause();
+    btn.textContent = '▶';
+    btn.title = 'Reproducir Video';
+  }
+};
+

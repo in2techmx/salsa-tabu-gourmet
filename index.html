@@ -41,6 +41,7 @@
       <nav>
         <ul class="nav-menu">
           <li class="nav-item"><a href="#coleccion">Colección Gourmet</a></li>
+          <li class="nav-item"><a href="#anuncios">🎬 Spots en Comida</a></li>
           <li class="nav-item"><a href="#pouches">Línea On-The-Go</a></li>
           <li class="nav-item"><a href="#packs">Packs</a></li>
           <li class="nav-item"><a href="#legado">El Legado 2010</a></li>
@@ -170,6 +171,164 @@
       <!-- 3D Tilt Grid (Injected via JS) -->
       <div class="products-grid" id="products-grid-container">
         <!-- Renderizado por app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial Advertising Spots Section: Tabú en la Comida Mexicana -->
+  <section class="commercial-spots-section" id="anuncios" style="padding: 90px 0; background: linear-gradient(180deg, rgba(8,9,13,0.95) 0%, rgba(15,18,26,0.98) 50%, rgba(8,9,13,0.95) 100%); border-top: 1px solid rgba(212,175,55,0.15); border-bottom: 1px solid rgba(212,175,55,0.15); position: relative;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+        <span class="badge-editorial amber">🎬 Spots Publicitarios • Mini Comerciales 2026</span>
+        <h2 class="section-title serif-font" style="font-size: clamp(2rem, 4vw, 3.2rem); margin-top: 12px; color: #fff;">
+          Tabú en la Cocina Mexicana
+        </h2>
+        <p class="section-desc" style="max-width: 820px; margin: 0 auto; color: var(--text-muted); font-size: 1.05rem;">
+          Tacos de rib-eye, quesadillas con queso Oaxaca fundido, tortas mexicanas de milanesa, tacos al pastor y suadero de calle. Disfruta tomas profesionales de cómo se sirve cada presentación para desatar el verdadero sabor prohibido sin una sola pizca de sal añadida.
+        </p>
+      </div>
+
+      <!-- Video Spots Grid -->
+      <div class="spots-grid">
+        <!-- Spot 1: Clásica en Taco Rib-Eye -->
+        <article class="spot-card">
+          <div class="spot-video-wrapper">
+            <video class="spot-video" src="assets/videos/spot_01_taco_clasica.mp4" poster="assets/images/spots/spot_01_taco_clasica_poster.jpg" autoplay loop muted playsinline></video>
+            <div class="spot-badge-overlay">🌮 TACO GOURMET RIB-EYE</div>
+            <div class="spot-badge-right">▶ SPOT HD</div>
+            <button class="spot-play-btn" onclick="toggleSpotVideo(this)" title="Reproducir / Pausar">❚❚</button>
+          </div>
+          <div class="spot-body">
+            <span class="spot-product-tag">Frasco de Cristal ~130g</span>
+            <h3 class="spot-dish">Taco de Rib-Eye en Maíz Azul</h3>
+            <p class="spot-desc">
+              Una cuchara dorada vierte el hilo ámbar de aceite de oliva extra virgen y hojuelas de habanero sobre carne jugosa en costra de queso fundido.
+            </p>
+            <div class="spot-pills">
+              <span class="spot-pill">0% Sodio</span>
+              <span class="spot-pill">Oliva EV</span>
+              <span class="spot-pill">Al Vacío</span>
+            </div>
+            <div class="spot-footer">
+              <span class="spot-price">$120 MXN</span>
+              <button class="spot-btn-cart" data-action="addcart" data-id="tabu-clasica-frasco">
+                🛒 Pedir Clásica
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Spot 2: Rubí en Quesadilla Oaxaca & Camarones -->
+        <article class="spot-card">
+          <div class="spot-video-wrapper">
+            <video class="spot-video" src="assets/videos/spot_02_quesadilla_rubi.mp4" poster="assets/images/spots/spot_02_quesadilla_rubi_poster.jpg" autoplay loop muted playsinline></video>
+            <div class="spot-badge-overlay" style="border-color: rgba(225,29,72,0.4); color: #f43f5e;">🧀 QUESADILLA OAXACA</div>
+            <div class="spot-badge-right" style="background: #b31034;">▶ SPOT HD</div>
+            <button class="spot-play-btn" onclick="toggleSpotVideo(this)" title="Reproducir / Pausar">❚❚</button>
+          </div>
+          <div class="spot-body">
+            <span class="spot-product-tag" style="color: #f43f5e;">Infusión Rubí ~130g</span>
+            <h3 class="spot-dish">Quesadilla & Camarones al Grill</h3>
+            <p class="spot-desc">
+              El torrente carmesí de flor de jamaica tostada y habanero baña el quesillo artesanal derretido aportando acidez cítrica natural y fuego puro.
+            </p>
+            <div class="spot-pills">
+              <span class="spot-pill">Flor de Jamaica</span>
+              <span class="spot-pill">Color Rubí</span>
+              <span class="spot-pill">0% Sal</span>
+            </div>
+            <div class="spot-footer">
+              <span class="spot-price">$120 MXN</span>
+              <button class="spot-btn-cart ruby" data-action="addcart" data-id="tabu-rubi-frasco">
+                🛒 Pedir Rubí
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Spot 3: Pouch en Torta Mexicana -->
+        <article class="spot-card">
+          <div class="spot-video-wrapper">
+            <video class="spot-video" src="assets/videos/spot_03_torta_pouch.mp4" poster="assets/images/spots/spot_03_torta_pouch_poster.jpg" autoplay loop muted playsinline></video>
+            <div class="spot-badge-overlay" style="border-color: rgba(56,189,248,0.4); color: #38bdf8;">🥪 TORTA MEXICANA</div>
+            <div class="spot-badge-right" style="background: #0284c7;">▶ SPOT HD</div>
+            <button class="spot-play-btn" onclick="toggleSpotVideo(this)" title="Reproducir / Pausar">❚❚</button>
+          </div>
+          <div class="spot-body">
+            <span class="spot-product-tag" style="color: #38bdf8;">Pouch On-The-Go 50g</span>
+            <h3 class="spot-dish">Torta de Milanesa con Aguacate</h3>
+            <p class="spot-desc">
+              Boquilla ergonómica en esquina que traza un zigzag milimétrico de salsa sobre frijoles, jitomate y milanesa crujiente dentro de telera recién horneada.
+            </p>
+            <div class="spot-pills">
+              <span class="spot-pill">Boquilla Esquina</span>
+              <span class="spot-pill">Anti-Goteo</span>
+              <span class="spot-pill">50g Portátil</span>
+            </div>
+            <div class="spot-footer">
+              <span class="spot-price">$45 MXN</span>
+              <button class="spot-btn-cart" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #fff;" data-action="addcart" data-id="tabu-clasica-pouch">
+                🛒 Pedir Pouch
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Spot 4: Pasta Brava en Tacos al Pastor -->
+        <article class="spot-card">
+          <div class="spot-video-wrapper">
+            <video class="spot-video" src="assets/videos/spot_04_pastor_pastabrava.mp4" poster="assets/images/spots/spot_04_pastor_pastabrava_poster.jpg" autoplay loop muted playsinline></video>
+            <div class="spot-badge-overlay" style="border-color: rgba(234,88,12,0.4); color: #fb923c;">🍍 TACOS AL PASTOR</div>
+            <div class="spot-badge-right" style="background: #ea580c;">▶ SPOT HD</div>
+            <button class="spot-play-btn" onclick="toggleSpotVideo(this)" title="Reproducir / Pausar">❚❚</button>
+          </div>
+          <div class="spot-body">
+            <span class="spot-product-tag" style="color: #fb923c;">Pasta Brava 70g</span>
+            <h3 class="spot-dish">Pastor Dorado con Piña Asada</h3>
+            <p class="spot-desc">
+              Pasta viva y densa de puro habanero y ajo criollo sin aceite de oliva. Máximo picor 10/10 para levantar el trompo de pastor y caldos de diario.
+            </p>
+            <div class="spot-pills">
+              <span class="spot-pill">Picor 10/10</span>
+              <span class="spot-pill">Sin Aceite</span>
+              <span class="spot-pill">Ultra Económica</span>
+            </div>
+            <div class="spot-footer">
+              <span class="spot-price">$29 MXN</span>
+              <button class="spot-btn-cart orange" data-action="addcart" data-id="pasta-habanera-brava">
+                🛒 Pedir Pasta Brava
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Spot 5: Pocket $10 en Tacos de Suadero -->
+        <article class="spot-card">
+          <div class="spot-video-wrapper">
+            <video class="spot-video" src="assets/videos/spot_05_street_sachet.mp4" poster="assets/images/spots/spot_05_street_sachet_poster.jpg" autoplay loop muted playsinline></video>
+            <div class="spot-badge-overlay" style="border-color: rgba(16,185,129,0.4); color: #34d399;">🔥 TACOS DE SUADERO CDMX</div>
+            <div class="spot-badge-right" style="background: #059669;">▶ $10 PESOS</div>
+            <button class="spot-play-btn" onclick="toggleSpotVideo(this)" title="Reproducir / Pausar">❚❚</button>
+          </div>
+          <div class="spot-body">
+            <span class="spot-product-tag" style="color: #34d399;">Pocket Monodosis 15g</span>
+            <h3 class="spot-dish">Suadero de Taquería Callejera</h3>
+            <p class="spot-desc">
+              Abre-fácil instantáneo en barra o banqueta. Salva tu taco con la salsa gourmet oficial en formato de impulso para tiendas de conveniencia y OXXO.
+            </p>
+            <div class="spot-pills">
+              <span class="spot-pill">$10 Pesos</span>
+              <span class="spot-pill">Abre-Fácil</span>
+              <span class="spot-pill">Monodosis 15g</span>
+            </div>
+            <div class="spot-footer">
+              <span class="spot-price">$10 MXN</span>
+              <button class="spot-btn-cart emerald" data-action="addcart" data-id="tabu-pocket-15g">
+                🛒 Pedir Pocket $10
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
