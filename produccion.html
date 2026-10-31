@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salsa Tabú — Ingeniería de Producción & Layouts de Planta</title>
+  <meta name="description" content="Ingeniería de manufactura para Salsa Tabú Gourmet: Comparativa entre Manufactura Casera / Taller Piloto (Horno de pan/pizza, Licuadora Industrial) vs Planta Industrializada. Layouts de planta, diagramas interactivos de flujo y cotizaciones de maquinaria.">
+
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f131c;
+      --bg-card-hover: #151a27;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #8c6d1f;
+      --bronze: #cd7f32;
+      --ruby: #e11d48;
+      --orange: #ea580c;
+      --emerald: #10b981;
+      --cyan: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border-soft: rgba(212, 175, 55, 0.18);
+      --border-bright: rgba(212, 175, 55, 0.55);
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 140vw;
+      height: 140vh;
+      background: radial-gradient(circle at 20% 15%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 30%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 85%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .top-banner {
+      background: rgba(16, 185, 129, 0.12);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+      color: #34d399;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .navbar {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 0;
+      background: rgba(7, 9, 14, 0.88);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      object-fit: contain;
+      background: #000;
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.7rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, #b8922c 100%);
+      color: #07090e;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border-soft);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 65%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 900px;
+      margin: 0 auto 30px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Comparison Selector Cards (Thumbnails Hub) */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+      margin: 30px 0 60px;
+    }
+
+    .hub-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-soft);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+    }
+
+    .hub-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-bright);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.2);
+    }
+
+    .hub-thumb-wrap {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      background: #090b12;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hub-thumb-svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hub-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .badge-casera {
+      background: rgba(234, 88, 12, 0.9);
+      color: #fff;
+    }
+
+    .badge-industrial {
+      background: rgba(6, 182, 212, 0.9);
+      color: #fff;
+    }
+
+    .hub-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .hub-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hub-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .hub-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .stat-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .hub-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-align: center;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hub-btn-casera {
+      background: rgba(234, 88, 12, 0.15);
+      border: 1px solid rgba(234, 88, 12, 0.4);
+      color: #fb923c;
+    }
+    .hub-card:hover .hub-btn-casera {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .hub-btn-industrial {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #38bdf8;
+    }
+    .hub-card:hover .hub-btn-industrial {
+      background: var(--cyan);
+      color: #07090e;
+    }
+
+    /* Detailed Plan Section */
+    .plan-section {
+      padding: 60px 0 100px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Layout Visual Blueprint */
+    .layout-box {
+      background: #090c14;
+      border: 2px solid var(--border-soft);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 45px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .blueprint-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+
+    .blueprint-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--gold-light);
+    }
+
+    .dim-tag {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border-soft);
+      color: var(--gold);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .interactive-svg-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 12px;
+      background: #05070b;
+      padding: 10px;
+    }
+
+    /* Animated Flow indicator */
+    @keyframes pulseDash {
+      to {
+        stroke-dashoffset: -40;
+      }
+    }
+
+    .flow-line {
+      stroke-dasharray: 8 6;
+      animation: pulseDash 1.2s linear infinite;
+    }
+
+    /* Machine Specs Table */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 30px 0 45px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      background: rgba(15, 19, 28, 0.85);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gold-light);
+      font-family: var(--font-serif);
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .total-row td {
+      background: rgba(212, 175, 55, 0.08);
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      border-top: 2px solid var(--gold);
+    }
+
+    .tag-model {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.78rem;
+      font-family: monospace;
+      color: var(--gold-light);
+    }
+
+    /* Process Flow Step Cards */
+    .step-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .step-card {
+      background: rgba(20, 24, 34, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .step-num {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: rgba(212, 175, 55, 0.35);
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      background: #040508;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 60px 0 35px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      color: var(--gold-light);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-col p, .footer-col a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Governance Banner -->
+  <div class="top-banner">
+    Ingeniería de Manufactura & Layouts de Producción • Salsa Tabú Gourmet • Cero Cajas Negras IN2TECHMX
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-group">
+        <img src="assets/images/logo_tabu_gourmet.svg" alt="Salsa Tabú Logo" class="brand-logo-img">
+        <div>
+          <div class="brand-title">TABÚ GOURMET</div>
+          <div class="brand-subtitle">Ingeniería & Layouts de Producción</div>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-btn">← Volver a Presentaciones</a>
+        <a href="#etapa-casera" class="nav-btn">Manufactura Piloto (Casera)</a>
+        <a href="#etapa-industrial" class="nav-btn">Planta Industrializada</a>
+        <a href="index.html#showcase" class="btn-gold">Catálogo de Frascos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="container">
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <span>🏭</span> Hoja de Ruta de Manufactura 2026
+      </div>
+      <h1>Layout de Operación y Dimensionamiento de Planta</h1>
+      <p>
+        Compara las dos vías de fabricación para Salsa Tabú Gourmet: la <strong>Etapa 1 (Manufactura Piloto / Casera)</strong> con equipo gastronómico accesible (horno de panadería/pizzas, licuadora industrial de volteo, dosificador de tolva y baño maría tradicional) vs la <strong>Etapa 2 (Planta Industrializada)</strong> con equipos de China/Taiwán (deshidratador por convección, molino coloidal, cerradora de vacío y envasado vertical).
+      </p>
+
+      <!-- Comparison Hub with Thumbnails (Link 1 & Link 2) -->
+      <div class="hub-grid">
+        <!-- Thumbnail Link 1: Manufactura Casera / Piloto -->
+        <a href="#etapa-casera" class="hub-card">
+          <div class="hub-thumb-wrap">
+            <svg class="hub-thumb-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="220" fill="#111520"/>
+              <!-- Grid background -->
+              <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(234, 88, 12, 0.12)" stroke-width="1"/>
+              </pattern>
+              <rect width="400" height="220" fill="url(#grid1)"/>
+              <!-- Layout boundary box 4x4m -->
+              <rect x="50" y="30" width="300" height="160" rx="8" fill="rgba(234, 88, 12, 0.08)" stroke="#ea580c" stroke-width="2"/>
+              <text x="65" y="55" fill="#fb923c" font-size="12" font-family="'Cinzel', serif" font-weight="bold">TALLER PILOTO (16 m²)</text>
+              <!-- Workstations -->
+              <rect x="70" y="80" width="50" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
+              <text x="80" y="105" fill="#fff" font-size="9">LAVADO</text>
+              
+              <rect x="135" y="80" width="55" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
+              <text x="145" y="105" fill="#fff" font-size="9">HORNO</text>
+              
+              <rect x="205" y="80" width="60" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
+              <text x="212" y="105" fill="#fff" font-size="9">LICUADORA</text>
+              
+              <rect x="280" y="80" width="55" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
+              <text x="290" y="105" fill="#fff" font-size="9">LLENADO</text>
+
+              <!-- Bath below -->
+              <rect x="170" y="135" width="80" height="40" rx="4" fill="#1e2433" stroke="#10b981"/>
+              <text x="180" y="160" fill="#34d399" font-size="9">BAÑO MARÍA</text>
+
+              <!-- Animated flow arrows -->
+              <path d="M 120 100 L 135 100 M 190 100 L 205 100 M 265 100 L 280 100" stroke="#fb923c" stroke-width="2" class="flow-line"/>
+              <path d="M 305 120 L 305 155 L 250 155" stroke="#34d399" stroke-width="2" class="flow-line"/>
+            </svg>
+            <span class="hub-badge badge-casera">Opción 1 • Taller Piloto</span>
+          </div>
+          <div class="hub-body">
+            <h3 class="hub-title">Etapa 1: Manufactura Piloto ("Casera")</h3>
+            <p class="hub-desc">
+              Arranque con equipos gastronómicos comerciales (horno de pizza/pan, licuadora de volteo 20L, dosificador de cono neumático y tina de baño maría). Ideal para validar el mercado sin endeudarse.
+            </p>
+            <div class="hub-stats-row">
+              <div>
+                <div class="stat-label">Espacio</div>
+                <div class="stat-val">16 m² (4×4m)</div>
+              </div>
+              <div>
+                <div class="stat-label">Capacidad</div>
+                <div class="stat-val">200–400 f/día</div>
+              </div>
+              <div>
+                <div class="stat-label">Inversión</div>
+                <div class="stat-val" style="color: #fb923c;">$109,000 MXN</div>
+              </div>
+            </div>
+            <button class="hub-btn hub-btn-casera">Ver Layout & Costos Detallados ↓</button>
+          </div>
+        </a>
+
+        <!-- Thumbnail Link 2: Planta Industrializada -->
+        <a href="#etapa-industrial" class="hub-card">
+          <div class="hub-thumb-wrap">
+            <svg class="hub-thumb-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="220" fill="#0c131e"/>
+              <!-- Grid background -->
+              <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(6, 182, 212, 0.15)" stroke-width="1"/>
+              </pattern>
+              <rect width="400" height="220" fill="url(#grid2)"/>
+              <!-- Layout boundary box 8x8m -->
+              <rect x="40" y="25" width="320" height="170" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="#06b6d4" stroke-width="2"/>
+              <text x="55" y="48" fill="#38bdf8" font-size="12" font-family="'Cinzel', serif" font-weight="bold">PLANTA INDUSTRIAL (64 m²)</text>
+              
+              <!-- Multi line machines -->
+              <rect x="55" y="70" width="45" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
+              <text x="60" y="92" fill="#fff" font-size="8">CT-C HORNO</text>
+
+              <rect x="110" y="70" width="45" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
+              <text x="115" y="92" fill="#fff" font-size="8">PULVERIZ</text>
+
+              <rect x="165" y="70" width="55" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
+              <text x="170" y="92" fill="#fff" font-size="8">TANQUE INF</text>
+
+              <!-- Branching lines -->
+              <rect x="240" y="60" width="55" height="30" rx="3" fill="#141e2e" stroke="#d4af37"/>
+              <text x="245" y="80" fill="#f3e5ab" font-size="8">G1WY VIDRIO</text>
+
+              <rect x="300" y="60" width="50" height="30" rx="3" fill="#141e2e" stroke="#d4af37"/>
+              <text x="305" y="80" fill="#f3e5ab" font-size="8">ZX-V CAP</text>
+
+              <rect x="240" y="100" width="55" height="30" rx="3" fill="#141e2e" stroke="#38bdf8"/>
+              <text x="245" y="120" fill="#38bdf8" font-size="8">BGL POUCH</text>
+
+              <rect x="240" y="140" width="55" height="30" rx="3" fill="#141e2e" stroke="#10b981"/>
+              <text x="245" y="160" fill="#34d399" font-size="8">DXD SACHET</text>
+
+              <!-- Animated flow lines -->
+              <path d="M 100 88 L 110 88 M 155 88 L 165 88 M 220 88 L 235 75 M 220 88 L 235 115 M 220 88 L 235 155" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+            </svg>
+            <span class="hub-badge badge-industrial">Opción 2 • Planta Continua</span>
+          </div>
+          <div class="hub-body">
+            <h3 class="hub-title">Etapa 2: Planta Industrializada (China / Taiwán)</h3>
+            <p class="hub-desc">
+              Equipamiento industrial en acero inoxidable SUS316L con deshidratador por convección, molino coloidal de alta cizalla, llenadora de pouches y envasadora vertical para sachets de OXXO.
+            </p>
+            <div class="hub-stats-row">
+              <div>
+                <div class="stat-label">Espacio</div>
+                <div class="stat-val">64 m² (8×8m)</div>
+              </div>
+              <div>
+                <div class="stat-label">Capacidad</div>
+                <div class="stat-val">1,500–3,000 f/día</div>
+              </div>
+              <div>
+                <div class="stat-label">Inversión</div>
+                <div class="stat-val" style="color: #38bdf8;">$512,800 MXN</div>
+              </div>
+            </div>
+            <button class="hub-btn hub-btn-industrial">Ver Layout & Costos Detallados ↓</button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: Detailed Layout Etapa Casera / Piloto -->
+  <section class="plan-section" id="etapa-casera">
+    <div class="container">
+      <div class="section-header">
+        <span class="dim-tag" style="background: rgba(234, 88, 12, 0.15); color: #fb923c; border-color: rgba(234, 88, 12, 0.4);">
+          Opción 1: Arranque Piloto (Gastronómico)
+        </span>
+        <h2 class="section-title">Layout de Taller Piloto (16 m² • 4.0m × 4.0m)</h2>
+        <p class="section-desc">
+          Este plano está optimizado para un local comercial pequeño, cocina oscura o garage adaptado. Sigue el principio sanitario de marcha hacia adelante (flujo en "U" o en "L") para evitar contaminación cruzada.
+        </p>
+      </div>
+
+      <!-- Blueprint SVG Casera -->
+      <div class="layout-box">
+        <div class="blueprint-header">
+          <div>
+            <div class="blueprint-title">Plano de Distribución de Equipo: Taller Piloto 4×4 Metros</div>
+            <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Piso epóxico, muros sanitarios lavables, tarja con trampa de grasa y campana de extracción de calor.</div>
+          </div>
+          <span class="dim-tag">Área Total: 16.0 m²</span>
+        </div>
+
+        <div class="interactive-svg-wrap">
+          <svg viewBox="0 0 900 520" width="100%" height="520" xmlns="http://www.w3.org/2000/svg">
+            <!-- Room Perimeter -->
+            <rect x="20" y="20" width="860" height="480" rx="12" fill="#080b12" stroke="#ea580c" stroke-width="3"/>
+            <!-- Grid Lines 1m = 100px -->
+            <defs>
+              <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect x="20" y="20" width="860" height="480" fill="url(#smallGrid)"/>
+
+            <!-- Wall Annotations -->
+            <text x="430" y="45" fill="#64748b" font-size="12" text-anchor="middle">MURO NORTE (EXTRACCIÓN & CALOR) - 4.0 METROS</text>
+            <text x="45" y="260" fill="#64748b" font-size="12" text-anchor="middle" transform="rotate(-90 45,260)">ACCESO MP (LAVADO) - 4.0 METROS</text>
+
+            <!-- WORKSTATION 1: Lavado y Pelado (Top Left) -->
+            <g id="ws1">
+              <rect x="60" y="70" width="160" height="90" rx="8" fill="#151b28" stroke="#38bdf8" stroke-width="2"/>
+              <text x="140" y="105" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">ZONA 1: TARJA & PELADO</text>
+              <text x="140" y="125" fill="#94a3b8" font-size="11" text-anchor="middle">Tarja Doble Tina SS304</text>
+              <text x="140" y="142" fill="#94a3b8" font-size="10" text-anchor="middle">+ Peladora de Ajo FX-128</text>
+            </g>
+
+            <!-- WORKSTATION 2: Horneado y Tostado (Top Center) -->
+            <g id="ws2">
+              <rect x="260" y="70" width="180" height="110" rx="8" fill="#1e1814" stroke="#ea580c" stroke-width="2"/>
+              <text x="350" y="105" fill="#fb923c" font-size="13" font-weight="bold" text-anchor="middle">ZONA 2: HORNEADO</text>
+              <text x="350" y="125" fill="#fcd34d" font-size="11" text-anchor="middle">Horno de Pan/Pizza (San-Son)</text>
+              <text x="350" y="145" fill="#94a3b8" font-size="10" text-anchor="middle">Tostado de habanero inflado</text>
+              <text x="350" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">y rostizado de ajo morado</text>
+            </g>
+
+            <!-- WORKSTATION 3: Licuado y Molienda (Top Right) -->
+            <g id="ws3">
+              <rect x="480" y="70" width="170" height="110" rx="8" fill="#151b28" stroke="#d4af37" stroke-width="2"/>
+              <text x="565" y="105" fill="#f3e5ab" font-size="13" font-weight="bold" text-anchor="middle">ZONA 3: MOLIENDA</text>
+              <text x="565" y="125" fill="#d4af37" font-size="11" text-anchor="middle">Licuadora Industrial 20L</text>
+              <text x="565" y="145" fill="#94a3b8" font-size="10" text-anchor="middle">Infusión con Aceite de Oliva EV</text>
+              <text x="565" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">+ Ácido Ascórbico/Cítrico</text>
+            </g>
+
+            <!-- WORKSTATION 4: Dosificado y Llenado (Right Middle) -->
+            <g id="ws4">
+              <rect x="680" y="160" width="170" height="130" rx="8" fill="#1a1c24" stroke="#d4af37" stroke-width="2"/>
+              <text x="765" y="195" fill="#d4af37" font-size="13" font-weight="bold" text-anchor="middle">ZONA 4: LLENADO</text>
+              <text x="765" y="220" fill="#fff" font-size="11" text-anchor="middle">Dosificadora Neumática</text>
+              <text x="765" y="240" fill="#94a3b8" font-size="10" text-anchor="middle">Tolva con corte cónico</text>
+              <text x="765" y="260" fill="#34d399" font-size="10" text-anchor="middle">Llena 130g en 2 segundos</text>
+            </g>
+
+            <!-- WORKSTATION 5: Baño María y Vacío (Bottom Center) -->
+            <g id="ws5">
+              <rect x="440" y="330" width="210" height="120" rx="8" fill="#10201a" stroke="#10b981" stroke-width="2"/>
+              <text x="545" y="365" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle">ZONA 5: BAÑO MARÍA</text>
+              <text x="545" y="390" fill="#fff" font-size="11" text-anchor="middle">Tina Pasteurizadora 100L</text>
+              <text x="545" y="410" fill="#94a3b8" font-size="10" text-anchor="middle">Inmersión a 85°C (15 min)</text>
+              <text x="545" y="430" fill="#34d399" font-size="10" text-anchor="middle">Vacío Hermético (2 años anaquel)</text>
+            </g>
+
+            <!-- WORKSTATION 6: Etiquetado y Empaque (Bottom Left) -->
+            <g id="ws6">
+              <rect x="180" y="330" width="210" height="120" rx="8" fill="#151b28" stroke="#a855f7" stroke-width="2"/>
+              <text x="285" y="365" fill="#c084fc" font-size="13" font-weight="bold" text-anchor="middle">ZONA 6: ETIQUETADO</text>
+              <text x="285" y="390" fill="#fff" font-size="11" text-anchor="middle">Etiquetadora Manual LT-50</text>
+              <text x="285" y="410" fill="#94a3b8" font-size="10" text-anchor="middle">Codificado de Lote y Caducidad</text>
+              <text x="285" y="430" fill="#94a3b8" font-size="10" text-anchor="middle">Empaque en cajas de 12 pzs</text>
+            </g>
+
+            <!-- Operator Walkway in Center -->
+            <rect x="270" y="210" width="370" height="90" rx="6" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.1)" stroke-dasharray="4 4"/>
+            <text x="455" y="260" fill="#64748b" font-size="12" text-anchor="middle">PASILLO DE OPERACIÓN CENTRAL (2 PERSONAS)</text>
+
+            <!-- Animated Flow Lines -->
+            <path d="M 220 115 L 260 115" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+            <path d="M 440 115 L 480 115" stroke="#ea580c" stroke-width="2" class="flow-line"/>
+            <path d="M 650 115 Q 765 115 765 160" stroke="#d4af37" stroke-width="2" class="flow-line" fill="none"/>
+            <path d="M 765 290 Q 765 390 650 390" stroke="#10b981" stroke-width="2" class="flow-line" fill="none"/>
+            <path d="M 440 390 L 390 390" stroke="#a855f7" stroke-width="2" class="flow-line"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Process Steps Explanation -->
+      <div class="step-flow-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <div class="step-title">🧄 Lavado y Pelado Rápido</div>
+          <p class="step-desc">
+            Se desinfecta el habanero en tina con bactericida vegetal y se pela el ajo morado con soplado de aire para evitar machacarlo a mano.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <div class="step-title">🔥 Horneado / Deshidratado</div>
+          <p class="step-desc">
+            En horno de gaveta o convector comercial a 80°C–90°C. El habanero se infla perdiendo humedad y el ajo se carameliza sin quemarse.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <div class="step-title">🌪️ Molienda en Licuadora 20L</div>
+          <p class="step-desc">
+            Se vierte el aceite de oliva extra virgen, ajo, chiles horneados y ácidos cítrico/ascórbico en licuadora de volteo. Se muelen las hojuelas en 90 segundos.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <div class="step-title">🏺 Llenado con Dosificadora</div>
+          <p class="step-desc">
+            La mezcla caliente se vacía a la tolva con dosificador de pistón. Se llenan 50 frascos de 130g en 4 minutos con exactitud de un gramo sin derrames.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">05</span>
+          <div class="step-title">♨️ Baño María Industrial</div>
+          <p class="step-desc">
+            Los frascos tapados se colocan en canastilla perforada y se sumergen 15 min a 85°C. Al enfriar suena el "clic" del botón de vacío. 2 años de anaquel garantizados.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cost Table Casera -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Equipo / Puesto de Trabajo</th>
+              <th>Modelo Recomendado</th>
+              <th>Función Específica</th>
+              <th>Proveedor Típico</th>
+              <th>Costo Unitario (MXN)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Peladora Neumática de Dientes de Ajo</strong></td>
+              <td><span class="tag-model">FX-128 / Mini Peeler</span></td>
+              <td>Pela 15 kg/hora sin romper el ajo</td>
+              <td>Importador CDMX / Alibaba</td>
+              <td>$11,500 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Horno de Convección / Pizzas</strong></td>
+              <td><span class="tag-model">San-Son / Ferrer 6 Charolas</span></td>
+              <td>Tostado e inflado térmico uniforme</td>
+              <td>Fabricante Nacional (CDMX)</td>
+              <td>$38,000 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Licuadora Industrial de Volteo</strong></td>
+              <td><span class="tag-model">Torrey / International 20 L</span></td>
+              <td>Molienda de hojuelas con aceite de oliva</td>
+              <td>Distribuidor Gastronómico</td>
+              <td>$22,500 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Dosificadora de Pistón Neumática</strong></td>
+              <td><span class="tag-model">G1WY-500 (Tolva cónica)</span></td>
+              <td>Llenado de 50 a 500 ml para frascos</td>
+              <td>MercadoLibre / Importador</td>
+              <td>$19,000 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Tina de Baño María con Canastilla</strong></td>
+              <td><span class="tag-model">TP-100L SS304 Eléctrico</span></td>
+              <td>Pasteurización térmica y vacío 85°C</td>
+              <td>Taller de Acero Inoxidable CDMX</td>
+              <td>$14,500 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Etiquetadora Manual de Botellas</strong></td>
+              <td><span class="tag-model">LT-50 con fechador</span></td>
+              <td>Coloca etiqueta cilíndrica y fecha lote</td>
+              <td>Amazon / MercadoLibre</td>
+              <td>$3,500 MXN</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="4"><strong>INVERSIÓN TOTAL EQUIPO TALLER PILOTO:</strong></td>
+              <td style="color: #fb923c;"><strong>$109,000 MXN (~$5,500 USD)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Detailed Layout Planta Industrializada -->
+  <section class="plan-section" id="etapa-industrial" style="background: rgba(10, 14, 22, 0.6);">
+    <div class="container">
+      <div class="section-header">
+        <span class="dim-tag" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border-color: rgba(6, 182, 212, 0.4);">
+          Opción 2: Escalamiento Industrial (China / Taiwán)
+        </span>
+        <h2 class="section-title">Layout de Planta Industrializada (64 m² • 8.0m × 8.0m)</h2>
+        <p class="section-desc">
+          Planta modular multi-línea con capacidad para fabricar simultáneamente los <strong>frascos de cristal (130g)</strong>, los <strong>pouches con boquilla (50g)</strong>, la <strong>Pasta Brava (70g)</strong> y los <strong>sachets de $10 pesos</strong> para cadenas de retail y tiendas OXXO.
+        </p>
+      </div>
+
+      <!-- Blueprint SVG Industrial -->
+      <div class="layout-box">
+        <div class="blueprint-header">
+          <div>
+            <div class="blueprint-title">Plano de Nave Industrial 8×8 Metros (Grado Alimentario COFEPRIS)</div>
+            <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Zonificación higiénica: Área Sucia (Recepción MP) ➔ Área Limpia (Infusión & Envasado) ➔ Área Seca (Empaque & Cuarentena).</div>
+          </div>
+          <span class="dim-tag">Área Total: 64.0 m²</span>
+        </div>
+
+        <div class="interactive-svg-wrap">
+          <svg viewBox="0 0 960 560" width="100%" height="560" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="920" height="520" rx="14" fill="#070a10" stroke="#06b6d4" stroke-width="3"/>
+            <rect x="20" y="20" width="920" height="520" fill="url(#smallGrid)"/>
+
+            <text x="480" y="45" fill="#64748b" font-size="12" text-anchor="middle">NAVE INDUSTRIAL DE ENVASADO Y PROCESO - 8.0 METROS</text>
+
+            <!-- Line 1: Insumos y Deshidratado (Left Column) -->
+            <g id="ind_prep">
+              <rect x="50" y="70" width="160" height="90" rx="8" fill="#121e28" stroke="#38bdf8" stroke-width="2"/>
+              <text x="130" y="105" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">TINA VORTEX SS304</text>
+              <text x="130" y="125" fill="#fff" font-size="10" text-anchor="middle">Lavado con Ozono</text>
+              <text x="130" y="142" fill="#94a3b8" font-size="9" text-anchor="middle">100 kg/hora</text>
+
+              <rect x="50" y="180" width="160" height="110" rx="8" fill="#241b14" stroke="#ea580c" stroke-width="2"/>
+              <text x="130" y="215" fill="#fb923c" font-size="12" font-weight="bold" text-anchor="middle">HORNO CT-C-I</text>
+              <text x="130" y="235" fill="#fcd34d" font-size="10" text-anchor="middle">48 Charolas Inox</text>
+              <text x="130" y="255" fill="#94a3b8" font-size="9" text-anchor="middle">Deshidratador Convector</text>
+              <text x="130" y="272" fill="#94a3b8" font-size="9" text-anchor="middle">Cap: 120 kg/lote</text>
+
+              <rect x="50" y="310" width="160" height="90" rx="8" fill="#151b28" stroke="#d4af37" stroke-width="2"/>
+              <text x="130" y="345" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">MOLINO WF-20B</text>
+              <text x="130" y="365" fill="#fff" font-size="10" text-anchor="middle">Pulverizador de Ajo</text>
+              <text x="130" y="382" fill="#94a3b8" font-size="9" text-anchor="middle">Hojuelas 2mm calibradas</text>
+
+              <rect x="50" y="420" width="160" height="90" rx="8" fill="#1a1c28" stroke="#06b6d4" stroke-width="2"/>
+              <text x="130" y="455" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">MOLINO COLUIDAL</text>
+              <text x="130" y="475" fill="#fff" font-size="10" text-anchor="middle">JMS-80 (Pasta Brava)</text>
+              <text x="130" y="492" fill="#34d399" font-size="9" text-anchor="middle">Molienda ultra-fina SS316</text>
+            </g>
+
+            <!-- Line 2: Tanque de Infusión Central -->
+            <g id="ind_infusion">
+              <rect x="270" y="180" width="180" height="180" rx="12" fill="#181c26" stroke="#d4af37" stroke-width="3"/>
+              <circle cx="360" cy="270" r="55" fill="#0d111a" stroke="#d4af37" stroke-width="2"/>
+              <text x="360" y="265" fill="#f3e5ab" font-size="13" font-weight="bold" text-anchor="middle">TANQUE TK-200L</text>
+              <text x="360" y="285" fill="#d4af37" font-size="10" text-anchor="middle">Infusor Enchaquetado</text>
+              <text x="360" y="302" fill="#94a3b8" font-size="9" text-anchor="middle">Control Temp 65°C</text>
+              <text x="360" y="340" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Mezcla Homogénea</text>
+            </g>
+
+            <!-- Line 3: Branching Envasado (Right Section) -->
+            <!-- Sub-line A: Frascos 130g -->
+            <g id="line_a">
+              <rect x="520" y="70" width="180" height="85" rx="8" fill="#181b24" stroke="#d4af37" stroke-width="2"/>
+              <text x="610" y="100" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA FRASCOS 130G</text>
+              <text x="610" y="120" fill="#fff" font-size="10" text-anchor="middle">Llenadora Pistón G2WY</text>
+              <text x="610" y="137" fill="#94a3b8" font-size="9" text-anchor="middle">Vel: 25 frascos/minuto</text>
+
+              <rect x="730" y="70" width="180" height="85" rx="8" fill="#181b24" stroke="#d4af37" stroke-width="2"/>
+              <text x="820" y="100" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">TAPADORA ZX-V</text>
+              <text x="820" y="120" fill="#34d399" font-size="10" text-anchor="middle">Vacío por Inyección Vapor</text>
+              <text x="820" y="137" fill="#94a3b8" font-size="9" text-anchor="middle">Cierre twist-off hermético</text>
+            </g>
+
+            <!-- Sub-line B: Pouches 50g con boquilla -->
+            <g id="line_b">
+              <rect x="520" y="190" width="390" height="85" rx="8" fill="#121e28" stroke="#38bdf8" stroke-width="2"/>
+              <text x="715" y="220" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA POUCHES SPOUT BGL-2 (50G & 70G)</text>
+              <text x="715" y="240" fill="#fff" font-size="10" text-anchor="middle">Llenado por la boquilla y enroscado automático de taparosca</text>
+              <text x="715" y="257" fill="#34d399" font-size="9" text-anchor="middle">Capacidad: 1,200 pouches/hora con precinto de seguridad</text>
+            </g>
+
+            <!-- Sub-line C: Sachets 15g para OXXO ($10) -->
+            <g id="line_c">
+              <rect x="520" y="310" width="390" height="95" rx="8" fill="#10201a" stroke="#10b981" stroke-width="2"/>
+              <text x="715" y="340" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA VERTICAL CONTINUA DXD-100 (SACHET $10)</text>
+              <text x="715" y="360" fill="#fff" font-size="10" text-anchor="middle">Formado, Llenado, Sellado en 4 lados y Muesca abre-fácil</text>
+              <text x="715" y="378" fill="#fcd34d" font-size="9" text-anchor="middle">Capacidad: 45 sobres/minuto (2,700 sobres/hora para retail)</text>
+            </g>
+
+            <!-- Packaging & Outfeed Tunnel -->
+            <g id="outfeed">
+              <rect x="520" y="435" width="390" height="75" rx="8" fill="#1c1626" stroke="#c084fc" stroke-width="2"/>
+              <text x="715" y="465" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">ZONA DE ETIQUETADO, LOTEADO TIJ & PALETIZADO</text>
+              <text x="715" y="488" fill="#94a3b8" font-size="10" text-anchor="middle">Impresión de Caducidad Inkjet, encartonado y control de calidad Gate 1</text>
+            </g>
+
+            <!-- Connecting animated piping -->
+            <path d="M 210 235 L 270 235" stroke="#ea580c" stroke-width="2" class="flow-line"/>
+            <path d="M 210 355 Q 240 355 240 300 L 270 300" stroke="#d4af37" stroke-width="2" class="flow-line" fill="none"/>
+            <path d="M 450 250 L 520 110" stroke="#d4af37" stroke-width="2" class="flow-line"/>
+            <path d="M 450 270 L 520 230" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+            <path d="M 450 290 L 520 350" stroke="#10b981" stroke-width="2" class="flow-line"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Cost Table Industrial -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Equipo Industrial</th>
+              <th>Modelo & Origen</th>
+              <th>Especificación / Material</th>
+              <th>Rendimiento / Hora</th>
+              <th>Costo FOB (USD)</th>
+              <th>Costo Aprox (MXN)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Horno Deshidratador Convector</strong></td>
+              <td><span class="tag-model">CT-C-I (Jiangsu, China)</span></td>
+              <td>SS304 / 48 Charolas / Eléctrico o Gas</td>
+              <td>120 kg / lote</td>
+              <td>$3,800 USD</td>
+              <td>$74,800 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Molino Pulverizador Universal</strong></td>
+              <td><span class="tag-model">WF-20B (China)</span></td>
+              <td>SS304 con ciclón recolector de polvo</td>
+              <td>60–150 kg / h</td>
+              <td>$2,100 USD</td>
+              <td>$41,300 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Molino Coloidal Húmedo</strong></td>
+              <td><span class="tag-model">JMS-80 (Taiwán / Wenzhou)</span></td>
+              <td>Rotor/Estator SS316L (Pasta Brava)</td>
+              <td>150–300 kg / h</td>
+              <td>$2,400 USD</td>
+              <td>$47,200 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Tanque Infusor Enchaquetado</strong></td>
+              <td><span class="tag-model">TK-200L (Ace Machinery)</span></td>
+              <td>Doble camisa térmica + Agitador PTFE</td>
+              <td>200 Litros</td>
+              <td>$3,200 USD</td>
+              <td>$63,000 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Llenadora de Pistón Doble Cabezal</strong></td>
+              <td><span class="tag-model">G2WY-500 (China)</span></td>
+              <td>Tolva calefaccionada con agitador continuo</td>
+              <td>1,200–1,800 frascos/h</td>
+              <td>$2,200 USD</td>
+              <td>$43,300 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Cerradora Twist-Off Vacío Vapor</strong></td>
+              <td><span class="tag-model">ZX-V Vacuum (Shenzhen/TW)</span></td>
+              <td>Inyección de vapor micro-ráfaga</td>
+              <td>1,200 frascos/h</td>
+              <td>$4,500 USD</td>
+              <td>$88,600 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Llenadora/Tapadora Spout Pouches</strong></td>
+              <td><span class="tag-model">BGL-2 (Wenzhou)</span></td>
+              <td>Inyección por boquilla y tapado torque</td>
+              <td>900–1,400 pouches/h</td>
+              <td>$4,600 USD</td>
+              <td>$90,600 MXN</td>
+            </tr>
+            <tr>
+              <td><strong>Envasadora Vertical Continua VFFS</strong></td>
+              <td><span class="tag-model">DXD-100Plus (Foshan Dession)</span></td>
+              <td>Formadora 4 sellos + muesca abre-fácil</td>
+              <td>2,400–3,600 sachet/h</td>
+              <td>$5,400 USD</td>
+              <td>$106,300 MXN</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="4"><strong>INVERSIÓN TOTAL PLANTA COMPLETA (8 EQUIPOS):</strong></td>
+              <td style="color: #38bdf8;"><strong>$28,200 USD</strong></td>
+              <td style="color: #38bdf8;"><strong>~$555,100 MXN</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Salsa Tabú Gourmet</h4>
+          <p>Especialidad culinaria de habanero gourmet libre de sodio. Envasado al vacío mediante baño maría e infusión en aceite de oliva virgen extra.</p>
+          <p>📍 CDMX & Península de Yucatán, México</p>
+        </div>
+        <div class="footer-col">
+          <h4>Vías de Manufactura</h4>
+          <a href="#etapa-casera">🏭 Etapa 1: Taller Piloto Gastronómico (16 m² • $109,000 MXN)</a>
+          <a href="#etapa-industrial">🏢 Etapa 2: Planta Continua Industrial (64 m² • $555,100 MXN)</a>
+          <a href="index.html">🏺 Catálogo de Presentaciones & Envases</a>
+        </div>
+        <div class="footer-col">
+          <h4>Gobernanza IN2TECHMX</h4>
+          <p>• Especificación Funcional de Procesos</p>
+          <p>• Inocuidad Alimentaria & Cero Cajas Negras</p>
+          <p>• Control de Vacío y Ausencia de Sal Añadida</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Salsa Tabú México. Estudio técnico de arquitectura industrial y dimensionamiento.</div>
+        <div>Director de Desarrollo (DD) • Departamento de Ingeniería de Alimentos</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
