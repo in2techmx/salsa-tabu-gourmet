@@ -257,6 +257,179 @@
       object-fit: cover;
     }
 
+    .hub-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .hub-card:hover .hub-thumb-img {
+      transform: scale(1.06);
+    }
+
+    /* Interactive View Switcher */
+    .view-switcher {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px;
+      border-radius: 10px;
+      width: fit-content;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .view-btn.active {
+      background: var(--gold);
+      color: #07090e;
+      box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
+    }
+
+    .view-btn-industrial.active {
+      background: var(--cyan);
+      color: #07090e;
+      box-shadow: 0 2px 12px rgba(6, 182, 212, 0.4);
+    }
+
+    .layout-view-panel {
+      display: none;
+    }
+    .layout-view-panel.active {
+      display: block;
+    }
+
+    /* Realistic 3D Photo Box */
+    .realistic-photo-wrap {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      background: #000;
+    }
+
+    .realistic-photo-img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-overlay-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(7, 9, 14, 0.95) 85%);
+      padding: 40px 28px 24px;
+      color: #fff;
+    }
+
+    .photo-caption-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .photo-caption-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 900px;
+      line-height: 1.5;
+    }
+
+    /* Hotspot Tag Elements on Photo */
+    .photo-hotspot {
+      position: absolute;
+      background: rgba(212, 175, 55, 0.94);
+      color: #07090e;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.6);
+      border: 1px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+      animation: floatTag 3s ease-in-out infinite;
+    }
+
+    .photo-hotspot.cyan {
+      background: rgba(6, 182, 212, 0.95);
+      color: #07090e;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(6, 182, 212, 0.6);
+    }
+
+    @keyframes floatTag {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* Macro Photo Showcase Grid */
+    .macro-feature-card {
+      background: rgba(15, 19, 28, 0.85);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 30px;
+      margin: 40px 0;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .macro-feature-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .macro-feature-img-wrap {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .macro-feature-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .macro-feature-card:hover .macro-feature-img {
+      transform: scale(1.04);
+    }
+
+    .macro-feature-content {
+      padding: 30px;
+    }
+
     .hub-badge {
       position: absolute;
       top: 16px;
@@ -630,38 +803,8 @@
         <!-- Thumbnail Link 1: Manufactura Casera / Piloto -->
         <a href="#etapa-casera" class="hub-card">
           <div class="hub-thumb-wrap">
-            <svg class="hub-thumb-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-              <rect width="400" height="220" fill="#111520"/>
-              <!-- Grid background -->
-              <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(234, 88, 12, 0.12)" stroke-width="1"/>
-              </pattern>
-              <rect width="400" height="220" fill="url(#grid1)"/>
-              <!-- Layout boundary box 4x4m -->
-              <rect x="50" y="30" width="300" height="160" rx="8" fill="rgba(234, 88, 12, 0.08)" stroke="#ea580c" stroke-width="2"/>
-              <text x="65" y="55" fill="#fb923c" font-size="12" font-family="'Cinzel', serif" font-weight="bold">TALLER PILOTO (16 m²)</text>
-              <!-- Workstations -->
-              <rect x="70" y="80" width="50" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-              <text x="80" y="105" fill="#fff" font-size="9">LAVADO</text>
-              
-              <rect x="135" y="80" width="55" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-              <text x="145" y="105" fill="#fff" font-size="9">HORNO</text>
-              
-              <rect x="205" y="80" width="60" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-              <text x="212" y="105" fill="#fff" font-size="9">LICUADORA</text>
-              
-              <rect x="280" y="80" width="55" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-              <text x="290" y="105" fill="#fff" font-size="9">LLENADO</text>
-
-              <!-- Bath below -->
-              <rect x="170" y="135" width="80" height="40" rx="4" fill="#1e2433" stroke="#10b981"/>
-              <text x="180" y="160" fill="#34d399" font-size="9">BAÑO MARÍA</text>
-
-              <!-- Animated flow arrows -->
-              <path d="M 120 100 L 135 100 M 190 100 L 205 100 M 265 100 L 280 100" stroke="#fb923c" stroke-width="2" class="flow-line"/>
-              <path d="M 305 120 L 305 155 L 250 155" stroke="#34d399" stroke-width="2" class="flow-line"/>
-            </svg>
-            <span class="hub-badge badge-casera">Opción 1 • Taller Piloto</span>
+            <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Render Fotográfico Taller Piloto 16m²" class="hub-thumb-img">
+            <span class="hub-badge badge-casera">Opción 1 • Taller Piloto (16 m²)</span>
           </div>
           <div class="hub-body">
             <h3 class="hub-title">Etapa 1: Manufactura Piloto ("Casera")</h3>
@@ -689,44 +832,8 @@
         <!-- Thumbnail Link 2: Planta Industrializada -->
         <a href="#etapa-industrial" class="hub-card">
           <div class="hub-thumb-wrap">
-            <svg class="hub-thumb-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-              <rect width="400" height="220" fill="#0c131e"/>
-              <!-- Grid background -->
-              <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(6, 182, 212, 0.15)" stroke-width="1"/>
-              </pattern>
-              <rect width="400" height="220" fill="url(#grid2)"/>
-              <!-- Layout boundary box 8x8m -->
-              <rect x="40" y="25" width="320" height="170" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="#06b6d4" stroke-width="2"/>
-              <text x="55" y="48" fill="#38bdf8" font-size="12" font-family="'Cinzel', serif" font-weight="bold">PLANTA INDUSTRIAL (64 m²)</text>
-              
-              <!-- Multi line machines -->
-              <rect x="55" y="70" width="45" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
-              <text x="60" y="92" fill="#fff" font-size="8">CT-C HORNO</text>
-
-              <rect x="110" y="70" width="45" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
-              <text x="115" y="92" fill="#fff" font-size="8">PULVERIZ</text>
-
-              <rect x="165" y="70" width="55" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
-              <text x="170" y="92" fill="#fff" font-size="8">TANQUE INF</text>
-
-              <!-- Branching lines -->
-              <rect x="240" y="60" width="55" height="30" rx="3" fill="#141e2e" stroke="#d4af37"/>
-              <text x="245" y="80" fill="#f3e5ab" font-size="8">G1WY VIDRIO</text>
-
-              <rect x="300" y="60" width="50" height="30" rx="3" fill="#141e2e" stroke="#d4af37"/>
-              <text x="305" y="80" fill="#f3e5ab" font-size="8">ZX-V CAP</text>
-
-              <rect x="240" y="100" width="55" height="30" rx="3" fill="#141e2e" stroke="#38bdf8"/>
-              <text x="245" y="120" fill="#38bdf8" font-size="8">BGL POUCH</text>
-
-              <rect x="240" y="140" width="55" height="30" rx="3" fill="#141e2e" stroke="#10b981"/>
-              <text x="245" y="160" fill="#34d399" font-size="8">DXD SACHET</text>
-
-              <!-- Animated flow lines -->
-              <path d="M 100 88 L 110 88 M 155 88 L 165 88 M 220 88 L 235 75 M 220 88 L 235 115 M 220 88 L 235 155" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
-            </svg>
-            <span class="hub-badge badge-industrial">Opción 2 • Planta Continua</span>
+            <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Render Fotográfico Planta Industrial 64m²" class="hub-thumb-img">
+            <span class="hub-badge badge-industrial">Opción 2 • Planta Continua (64 m²)</span>
           </div>
           <div class="hub-body">
             <h3 class="hub-title">Etapa 2: Planta Industrializada (China / Taiwán)</h3>
@@ -740,11 +847,11 @@
               </div>
               <div>
                 <div class="stat-label">Capacidad</div>
-                <div class="stat-val">1,500–3,000 f/día</div>
+                <div class="stat-val">1,200–2,400 f/h</div>
               </div>
               <div>
                 <div class="stat-label">Inversión</div>
-                <div class="stat-val" style="color: #38bdf8;">$512,800 MXN</div>
+                <div class="stat-val" style="color: #38bdf8;">$555,100 MXN</div>
               </div>
             </div>
             <button class="hub-btn hub-btn-industrial">Ver Layout & Costos Detallados ↓</button>
@@ -767,7 +874,7 @@
         </p>
       </div>
 
-      <!-- Blueprint SVG Casera -->
+      <!-- Blueprint & 3D Realistic Layout Casera -->
       <div class="layout-box">
         <div class="blueprint-header">
           <div>
@@ -777,87 +884,142 @@
           <span class="dim-tag">Área Total: 16.0 m²</span>
         </div>
 
-        <div class="interactive-svg-wrap">
-          <svg viewBox="0 0 900 520" width="100%" height="520" xmlns="http://www.w3.org/2000/svg">
-            <!-- Room Perimeter -->
-            <rect x="20" y="20" width="860" height="480" rx="12" fill="#080b12" stroke="#ea580c" stroke-width="3"/>
-            <!-- Grid Lines 1m = 100px -->
-            <defs>
-              <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1"/>
-              </pattern>
-            </defs>
-            <rect x="20" y="20" width="860" height="480" fill="url(#smallGrid)"/>
-
-            <!-- Wall Annotations -->
-            <text x="430" y="45" fill="#64748b" font-size="12" text-anchor="middle">MURO NORTE (EXTRACCIÓN & CALOR) - 4.0 METROS</text>
-            <text x="45" y="260" fill="#64748b" font-size="12" text-anchor="middle" transform="rotate(-90 45,260)">ACCESO MP (LAVADO) - 4.0 METROS</text>
-
-            <!-- WORKSTATION 1: Lavado y Pelado (Top Left) -->
-            <g id="ws1">
-              <rect x="60" y="70" width="160" height="90" rx="8" fill="#151b28" stroke="#38bdf8" stroke-width="2"/>
-              <text x="140" y="105" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">ZONA 1: TARJA & PELADO</text>
-              <text x="140" y="125" fill="#94a3b8" font-size="11" text-anchor="middle">Tarja Doble Tina SS304</text>
-              <text x="140" y="142" fill="#94a3b8" font-size="10" text-anchor="middle">+ Peladora de Ajo FX-128</text>
-            </g>
-
-            <!-- WORKSTATION 2: Horneado y Tostado (Top Center) -->
-            <g id="ws2">
-              <rect x="260" y="70" width="180" height="110" rx="8" fill="#1e1814" stroke="#ea580c" stroke-width="2"/>
-              <text x="350" y="105" fill="#fb923c" font-size="13" font-weight="bold" text-anchor="middle">ZONA 2: HORNEADO</text>
-              <text x="350" y="125" fill="#fcd34d" font-size="11" text-anchor="middle">Horno de Pan/Pizza (San-Son)</text>
-              <text x="350" y="145" fill="#94a3b8" font-size="10" text-anchor="middle">Tostado de habanero inflado</text>
-              <text x="350" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">y rostizado de ajo morado</text>
-            </g>
-
-            <!-- WORKSTATION 3: Licuado y Molienda (Top Right) -->
-            <g id="ws3">
-              <rect x="480" y="70" width="170" height="110" rx="8" fill="#151b28" stroke="#d4af37" stroke-width="2"/>
-              <text x="565" y="105" fill="#f3e5ab" font-size="13" font-weight="bold" text-anchor="middle">ZONA 3: MOLIENDA</text>
-              <text x="565" y="125" fill="#d4af37" font-size="11" text-anchor="middle">Licuadora Industrial 20L</text>
-              <text x="565" y="145" fill="#94a3b8" font-size="10" text-anchor="middle">Infusión con Aceite de Oliva EV</text>
-              <text x="565" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">+ Ácido Ascórbico/Cítrico</text>
-            </g>
-
-            <!-- WORKSTATION 4: Dosificado y Llenado (Right Middle) -->
-            <g id="ws4">
-              <rect x="680" y="160" width="170" height="130" rx="8" fill="#1a1c24" stroke="#d4af37" stroke-width="2"/>
-              <text x="765" y="195" fill="#d4af37" font-size="13" font-weight="bold" text-anchor="middle">ZONA 4: LLENADO</text>
-              <text x="765" y="220" fill="#fff" font-size="11" text-anchor="middle">Dosificadora Neumática</text>
-              <text x="765" y="240" fill="#94a3b8" font-size="10" text-anchor="middle">Tolva con corte cónico</text>
-              <text x="765" y="260" fill="#34d399" font-size="10" text-anchor="middle">Llena 130g en 2 segundos</text>
-            </g>
-
-            <!-- WORKSTATION 5: Baño María y Vacío (Bottom Center) -->
-            <g id="ws5">
-              <rect x="440" y="330" width="210" height="120" rx="8" fill="#10201a" stroke="#10b981" stroke-width="2"/>
-              <text x="545" y="365" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle">ZONA 5: BAÑO MARÍA</text>
-              <text x="545" y="390" fill="#fff" font-size="11" text-anchor="middle">Tina Pasteurizadora 100L</text>
-              <text x="545" y="410" fill="#94a3b8" font-size="10" text-anchor="middle">Inmersión a 85°C (15 min)</text>
-              <text x="545" y="430" fill="#34d399" font-size="10" text-anchor="middle">Vacío Hermético (2 años anaquel)</text>
-            </g>
-
-            <!-- WORKSTATION 6: Etiquetado y Empaque (Bottom Left) -->
-            <g id="ws6">
-              <rect x="180" y="330" width="210" height="120" rx="8" fill="#151b28" stroke="#a855f7" stroke-width="2"/>
-              <text x="285" y="365" fill="#c084fc" font-size="13" font-weight="bold" text-anchor="middle">ZONA 6: ETIQUETADO</text>
-              <text x="285" y="390" fill="#fff" font-size="11" text-anchor="middle">Etiquetadora Manual LT-50</text>
-              <text x="285" y="410" fill="#94a3b8" font-size="10" text-anchor="middle">Codificado de Lote y Caducidad</text>
-              <text x="285" y="430" fill="#94a3b8" font-size="10" text-anchor="middle">Empaque en cajas de 12 pzs</text>
-            </g>
-
-            <!-- Operator Walkway in Center -->
-            <rect x="270" y="210" width="370" height="90" rx="6" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.1)" stroke-dasharray="4 4"/>
-            <text x="455" y="260" fill="#64748b" font-size="12" text-anchor="middle">PASILLO DE OPERACIÓN CENTRAL (2 PERSONAS)</text>
-
-            <!-- Animated Flow Lines -->
-            <path d="M 220 115 L 260 115" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
-            <path d="M 440 115 L 480 115" stroke="#ea580c" stroke-width="2" class="flow-line"/>
-            <path d="M 650 115 Q 765 115 765 160" stroke="#d4af37" stroke-width="2" class="flow-line" fill="none"/>
-            <path d="M 765 290 Q 765 390 650 390" stroke="#10b981" stroke-width="2" class="flow-line" fill="none"/>
-            <path d="M 440 390 L 390 390" stroke="#a855f7" stroke-width="2" class="flow-line"/>
-          </svg>
+        <!-- View Mode Switcher -->
+        <div class="view-switcher">
+          <button class="view-btn active" id="btn-casera-photo" onclick="switchLayoutView('casera', 'photo')">📸 Render Fotográfico Realista 3D</button>
+          <button class="view-btn" id="btn-casera-cad" onclick="switchLayoutView('casera', 'cad')">📐 Plano Técnico CAD (Cotas & Servicios)</button>
         </div>
+
+        <!-- Panel 1: Render Fotográfico Realista 3D -->
+        <div class="layout-view-panel active" id="casera-view-photo">
+          <div class="realistic-photo-wrap">
+            <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Render Fotográfico Realista Taller Piloto 16m²" class="realistic-photo-img">
+            
+            <!-- Floating Hotspots -->
+            <div class="photo-hotspot" style="top: 26%; left: 10%;">🧄 Tarja & Pelado</div>
+            <div class="photo-hotspot" style="top: 22%; left: 34%;">🔥 Horno Pan/Pizza San-Son</div>
+            <div class="photo-hotspot" style="top: 36%; left: 54%;">🌪️ Licuadora Volteo 20L</div>
+            <div class="photo-hotspot" style="top: 48%; left: 78%;">🧴 Dosificadora Neumática</div>
+            <div class="photo-hotspot" style="top: 68%; left: 44%;">♨️ Tina Baño María 100L</div>
+
+            <div class="photo-overlay-caption">
+              <div class="photo-caption-title">Taller Piloto Gastronómico (16 m² • 4.0m × 4.0m)</div>
+              <div class="photo-caption-text">
+                Perspectiva fotorrealista de la nave artesanal con flujo continuo higiénico en "U". Diseñado para operar con 2 técnicos, paredes lavables antibacteriales, piso epóxico con drenaje central de rejilla inoxidable, campana de extracción y estaciones de acero SUS304.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Plano Vectorial Técnico CAD -->
+        <div class="layout-view-panel" id="casera-view-cad">
+          <div class="interactive-svg-wrap">
+            <svg viewBox="0 0 900 520" width="100%" height="520" xmlns="http://www.w3.org/2000/svg">
+              <!-- Room Perimeter -->
+              <rect x="20" y="20" width="860" height="480" rx="12" fill="#080b12" stroke="#ea580c" stroke-width="3"/>
+              <!-- Grid Lines 1m = 100px -->
+              <defs>
+                <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect x="20" y="20" width="860" height="480" fill="url(#smallGrid)"/>
+
+              <!-- Wall Annotations -->
+              <text x="430" y="45" fill="#64748b" font-size="12" text-anchor="middle">MURO NORTE (EXTRACCIÓN & CALOR) - 4.0 METROS</text>
+              <text x="45" y="260" fill="#64748b" font-size="12" text-anchor="middle" transform="rotate(-90 45,260)">ACCESO MP (LAVADO) - 4.0 METROS</text>
+
+              <!-- WORKSTATION 1: Lavado y Pelado (Top Left) -->
+              <g id="ws1">
+                <rect x="60" y="70" width="160" height="90" rx="8" fill="#151b28" stroke="#38bdf8" stroke-width="2"/>
+                <text x="140" y="105" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">ZONA 1: TARJA & PELADO</text>
+                <text x="140" y="125" fill="#94a3b8" font-size="11" text-anchor="middle">Tarja Doble Tina SS304</text>
+                <text x="140" y="142" fill="#94a3b8" font-size="10" text-anchor="middle">+ Peladora de Ajo FX-128</text>
+              </g>
+
+              <!-- WORKSTATION 2: Horneado y Tostado (Top Center) -->
+              <g id="ws2">
+                <rect x="260" y="70" width="180" height="110" rx="8" fill="#1e1814" stroke="#ea580c" stroke-width="2"/>
+                <text x="350" y="105" fill="#fb923c" font-size="13" font-weight="bold" text-anchor="middle">ZONA 2: HORNEADO</text>
+                <text x="350" y="125" fill="#fcd34d" font-size="11" text-anchor="middle">Horno de Pan/Pizza (San-Son)</text>
+                <text x="350" y="145" fill="#94a3b8" font-size="10" text-anchor="middle">Tostado de habanero inflado</text>
+                <text x="350" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">y rostizado de ajo morado</text>
+              </g>
+
+              <!-- WORKSTATION 3: Licuado y Molienda (Top Right) -->
+              <g id="ws3">
+                <rect x="480" y="70" width="170" height="110" rx="8" fill="#151b28" stroke="#d4af37" stroke-width="2"/>
+                <text x="565" y="105" fill="#f3e5ab" font-size="13" font-weight="bold" text-anchor="middle">ZONA 3: MOLIENDA</text>
+                <text x="565" y="125" fill="#d4af37" font-size="11" text-anchor="middle">Licuadora Industrial 20L</text>
+                <text x="565" y="145" fill="#94a3b8" font-size="10" text-anchor="middle">Infusión con Aceite de Oliva EV</text>
+                <text x="565" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">+ Ácido Ascórbico/Cítrico</text>
+              </g>
+
+              <!-- WORKSTATION 4: Dosificado y Llenado (Right Middle) -->
+              <g id="ws4">
+                <rect x="680" y="160" width="170" height="130" rx="8" fill="#1a1c24" stroke="#d4af37" stroke-width="2"/>
+                <text x="765" y="195" fill="#d4af37" font-size="13" font-weight="bold" text-anchor="middle">ZONA 4: LLENADO</text>
+                <text x="765" y="220" fill="#fff" font-size="11" text-anchor="middle">Dosificadora Neumática</text>
+                <text x="765" y="240" fill="#94a3b8" font-size="10" text-anchor="middle">Tolva con corte cónico</text>
+                <text x="765" y="260" fill="#34d399" font-size="10" text-anchor="middle">Llena 130g en 2 segundos</text>
+              </g>
+
+              <!-- WORKSTATION 5: Baño María y Vacío (Bottom Center) -->
+              <g id="ws5">
+                <rect x="440" y="330" width="210" height="120" rx="8" fill="#10201a" stroke="#10b981" stroke-width="2"/>
+                <text x="545" y="365" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle">ZONA 5: BAÑO MARÍA</text>
+                <text x="545" y="390" fill="#fff" font-size="11" text-anchor="middle">Tina Pasteurizadora 100L</text>
+                <text x="545" y="410" fill="#94a3b8" font-size="10" text-anchor="middle">Inmersión a 85°C (15 min)</text>
+                <text x="545" y="430" fill="#34d399" font-size="10" text-anchor="middle">Vacío Hermético (2 años anaquel)</text>
+              </g>
+
+              <!-- WORKSTATION 6: Etiquetado y Empaque (Bottom Left) -->
+              <g id="ws6">
+                <rect x="180" y="330" width="210" height="120" rx="8" fill="#151b28" stroke="#a855f7" stroke-width="2"/>
+                <text x="285" y="365" fill="#c084fc" font-size="13" font-weight="bold" text-anchor="middle">ZONA 6: ETIQUETADO</text>
+                <text x="285" y="390" fill="#fff" font-size="11" text-anchor="middle">Etiquetadora Manual LT-50</text>
+                <text x="285" y="410" fill="#94a3b8" font-size="10" text-anchor="middle">Codificado de Lote y Caducidad</text>
+                <text x="285" y="430" fill="#94a3b8" font-size="10" text-anchor="middle">Empaque en cajas de 12 pzs</text>
+              </g>
+
+              <!-- Operator Walkway in Center -->
+              <rect x="270" y="210" width="370" height="90" rx="6" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.1)" stroke-dasharray="4 4"/>
+              <text x="455" y="260" fill="#64748b" font-size="12" text-anchor="middle">PASILLO DE OPERACIÓN CENTRAL (2 PERSONAS)</text>
+
+              <!-- Animated Flow Lines -->
+              <path d="M 220 115 L 260 115" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+              <path d="M 440 115 L 480 115" stroke="#ea580c" stroke-width="2" class="flow-line"/>
+              <path d="M 650 115 Q 765 115 765 160" stroke="#d4af37" stroke-width="2" class="flow-line" fill="none"/>
+              <path d="M 765 290 Q 765 390 650 390" stroke="#10b981" stroke-width="2" class="flow-line" fill="none"/>
+              <path d="M 440 390 L 390 390" stroke="#a855f7" stroke-width="2" class="flow-line"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Macro Feature Card: Dosificado y Baño María -->
+      <div class="macro-feature-card">
+        <div class="macro-feature-img-wrap">
+          <img src="assets/images/produccion/dosificado_y_bano_maria_piloto_macro.jpg" alt="Detalle Macro de Dosificado y Baño María" class="macro-feature-img">
+        </div>
+        <div class="macro-feature-content">
+          <span class="dim-tag" style="background: rgba(234, 88, 12, 0.15); color: #fb923c; border-color: rgba(234, 88, 12, 0.4); margin-bottom: 12px; display: inline-block;">
+            Física de Envasado & Pasteurización
+          </span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fff; margin-bottom: 14px;">
+            Dosificación Antigoteo & Vacío por Baño María
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+            <strong>1. Dosificado Volumétrico Neumático:</strong> La tolva cónica SUS304 permite alimentar la salsa espesa de habanero con aceite de oliva sin estancamiento. La válvula antigoteo con corte neumático garantiza un llenado exacto de 130g ± 1g en menos de 2 segundos.
+          </p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+            <strong>2. Principio del Vacío en Baño María:</strong> Al sumergir los frascos con tapa twist-off pre-ajustada en agua caliente a 85°C durante 15 minutos, el aire en el espacio de cabeza (headspace) se expande y escapa a través del plastisol microporoso. Al enfriarse a temperatura ambiente, los vapores residuales condensan provocando una contracción volumétrica drástica que colapsa el botón de seguridad de la tapa (efecto "pop" audible) y genera un vacío hermético de 10–15 inHg.
+          </p>
+          <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: #34d399;">
+            ✅ <strong>Resultado Comprobado:</strong> 24 meses de vida de anaquel a temperatura ambiente, estabilidad microbiana absoluta y cero conservadores químicos de sodio.
+          </div>
+        </div>
+      </div>
       </div>
 
       <!-- Process Steps Explanation -->
@@ -977,7 +1139,7 @@
         </p>
       </div>
 
-      <!-- Blueprint SVG Industrial -->
+      <!-- Blueprint & 3D Realistic Layout Industrial -->
       <div class="layout-box">
         <div class="blueprint-header">
           <div>
@@ -987,92 +1149,147 @@
           <span class="dim-tag">Área Total: 64.0 m²</span>
         </div>
 
-        <div class="interactive-svg-wrap">
-          <svg viewBox="0 0 960 560" width="100%" height="560" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="20" width="920" height="520" rx="14" fill="#070a10" stroke="#06b6d4" stroke-width="3"/>
-            <rect x="20" y="20" width="920" height="520" fill="url(#smallGrid)"/>
-
-            <text x="480" y="45" fill="#64748b" font-size="12" text-anchor="middle">NAVE INDUSTRIAL DE ENVASADO Y PROCESO - 8.0 METROS</text>
-
-            <!-- Line 1: Insumos y Deshidratado (Left Column) -->
-            <g id="ind_prep">
-              <rect x="50" y="70" width="160" height="90" rx="8" fill="#121e28" stroke="#38bdf8" stroke-width="2"/>
-              <text x="130" y="105" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">TINA VORTEX SS304</text>
-              <text x="130" y="125" fill="#fff" font-size="10" text-anchor="middle">Lavado con Ozono</text>
-              <text x="130" y="142" fill="#94a3b8" font-size="9" text-anchor="middle">100 kg/hora</text>
-
-              <rect x="50" y="180" width="160" height="110" rx="8" fill="#241b14" stroke="#ea580c" stroke-width="2"/>
-              <text x="130" y="215" fill="#fb923c" font-size="12" font-weight="bold" text-anchor="middle">HORNO CT-C-I</text>
-              <text x="130" y="235" fill="#fcd34d" font-size="10" text-anchor="middle">48 Charolas Inox</text>
-              <text x="130" y="255" fill="#94a3b8" font-size="9" text-anchor="middle">Deshidratador Convector</text>
-              <text x="130" y="272" fill="#94a3b8" font-size="9" text-anchor="middle">Cap: 120 kg/lote</text>
-
-              <rect x="50" y="310" width="160" height="90" rx="8" fill="#151b28" stroke="#d4af37" stroke-width="2"/>
-              <text x="130" y="345" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">MOLINO WF-20B</text>
-              <text x="130" y="365" fill="#fff" font-size="10" text-anchor="middle">Pulverizador de Ajo</text>
-              <text x="130" y="382" fill="#94a3b8" font-size="9" text-anchor="middle">Hojuelas 2mm calibradas</text>
-
-              <rect x="50" y="420" width="160" height="90" rx="8" fill="#1a1c28" stroke="#06b6d4" stroke-width="2"/>
-              <text x="130" y="455" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">MOLINO COLUIDAL</text>
-              <text x="130" y="475" fill="#fff" font-size="10" text-anchor="middle">JMS-80 (Pasta Brava)</text>
-              <text x="130" y="492" fill="#34d399" font-size="9" text-anchor="middle">Molienda ultra-fina SS316</text>
-            </g>
-
-            <!-- Line 2: Tanque de Infusión Central -->
-            <g id="ind_infusion">
-              <rect x="270" y="180" width="180" height="180" rx="12" fill="#181c26" stroke="#d4af37" stroke-width="3"/>
-              <circle cx="360" cy="270" r="55" fill="#0d111a" stroke="#d4af37" stroke-width="2"/>
-              <text x="360" y="265" fill="#f3e5ab" font-size="13" font-weight="bold" text-anchor="middle">TANQUE TK-200L</text>
-              <text x="360" y="285" fill="#d4af37" font-size="10" text-anchor="middle">Infusor Enchaquetado</text>
-              <text x="360" y="302" fill="#94a3b8" font-size="9" text-anchor="middle">Control Temp 65°C</text>
-              <text x="360" y="340" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Mezcla Homogénea</text>
-            </g>
-
-            <!-- Line 3: Branching Envasado (Right Section) -->
-            <!-- Sub-line A: Frascos 130g -->
-            <g id="line_a">
-              <rect x="520" y="70" width="180" height="85" rx="8" fill="#181b24" stroke="#d4af37" stroke-width="2"/>
-              <text x="610" y="100" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA FRASCOS 130G</text>
-              <text x="610" y="120" fill="#fff" font-size="10" text-anchor="middle">Llenadora Pistón G2WY</text>
-              <text x="610" y="137" fill="#94a3b8" font-size="9" text-anchor="middle">Vel: 25 frascos/minuto</text>
-
-              <rect x="730" y="70" width="180" height="85" rx="8" fill="#181b24" stroke="#d4af37" stroke-width="2"/>
-              <text x="820" y="100" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">TAPADORA ZX-V</text>
-              <text x="820" y="120" fill="#34d399" font-size="10" text-anchor="middle">Vacío por Inyección Vapor</text>
-              <text x="820" y="137" fill="#94a3b8" font-size="9" text-anchor="middle">Cierre twist-off hermético</text>
-            </g>
-
-            <!-- Sub-line B: Pouches 50g con boquilla -->
-            <g id="line_b">
-              <rect x="520" y="190" width="390" height="85" rx="8" fill="#121e28" stroke="#38bdf8" stroke-width="2"/>
-              <text x="715" y="220" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA POUCHES SPOUT BGL-2 (50G & 70G)</text>
-              <text x="715" y="240" fill="#fff" font-size="10" text-anchor="middle">Llenado por la boquilla y enroscado automático de taparosca</text>
-              <text x="715" y="257" fill="#34d399" font-size="9" text-anchor="middle">Capacidad: 1,200 pouches/hora con precinto de seguridad</text>
-            </g>
-
-            <!-- Sub-line C: Sachets 15g para OXXO ($10) -->
-            <g id="line_c">
-              <rect x="520" y="310" width="390" height="95" rx="8" fill="#10201a" stroke="#10b981" stroke-width="2"/>
-              <text x="715" y="340" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA VERTICAL CONTINUA DXD-100 (SACHET $10)</text>
-              <text x="715" y="360" fill="#fff" font-size="10" text-anchor="middle">Formado, Llenado, Sellado en 4 lados y Muesca abre-fácil</text>
-              <text x="715" y="378" fill="#fcd34d" font-size="9" text-anchor="middle">Capacidad: 45 sobres/minuto (2,700 sobres/hora para retail)</text>
-            </g>
-
-            <!-- Packaging & Outfeed Tunnel -->
-            <g id="outfeed">
-              <rect x="520" y="435" width="390" height="75" rx="8" fill="#1c1626" stroke="#c084fc" stroke-width="2"/>
-              <text x="715" y="465" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">ZONA DE ETIQUETADO, LOTEADO TIJ & PALETIZADO</text>
-              <text x="715" y="488" fill="#94a3b8" font-size="10" text-anchor="middle">Impresión de Caducidad Inkjet, encartonado y control de calidad Gate 1</text>
-            </g>
-
-            <!-- Connecting animated piping -->
-            <path d="M 210 235 L 270 235" stroke="#ea580c" stroke-width="2" class="flow-line"/>
-            <path d="M 210 355 Q 240 355 240 300 L 270 300" stroke="#d4af37" stroke-width="2" class="flow-line" fill="none"/>
-            <path d="M 450 250 L 520 110" stroke="#d4af37" stroke-width="2" class="flow-line"/>
-            <path d="M 450 270 L 520 230" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
-            <path d="M 450 290 L 520 350" stroke="#10b981" stroke-width="2" class="flow-line"/>
-          </svg>
+        <!-- View Mode Switcher -->
+        <div class="view-switcher">
+          <button class="view-btn view-btn-industrial active" id="btn-industrial-photo" onclick="switchLayoutView('industrial', 'photo')">📸 Render Fotográfico Realista 3D</button>
+          <button class="view-btn view-btn-industrial" id="btn-industrial-cad" onclick="switchLayoutView('industrial', 'cad')">📐 Plano Técnico CAD (Cotas & Servicios)</button>
         </div>
+
+        <!-- Panel 1: Render Fotográfico Realista 3D Industrial -->
+        <div class="layout-view-panel active" id="industrial-view-photo">
+          <div class="realistic-photo-wrap">
+            <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Render Fotográfico Realista Planta Industrial 64m²" class="realistic-photo-img">
+            
+            <!-- Floating Hotspots -->
+            <div class="photo-hotspot cyan" style="top: 24%; left: 16%;">♨️ Horno Convector CT-C</div>
+            <div class="photo-hotspot cyan" style="top: 38%; left: 36%;">🍲 Reactor Tanque 200L</div>
+            <div class="photo-hotspot cyan" style="top: 54%; left: 24%;">⚙️ Molino Coloidal SUS316L</div>
+            <div class="photo-hotspot cyan" style="top: 40%; left: 68%;">🍾 Línea Llenado & Tapado ZX-V</div>
+            <div class="photo-hotspot cyan" style="top: 65%; left: 82%;">🛍️ Envasadora VFFS Sachets $10</div>
+
+            <div class="photo-overlay-caption">
+              <div class="photo-caption-title" style="color: #38bdf8;">Planta Industrial Automatizada (64 m² • 8.0m × 8.0m)</div>
+              <div class="photo-caption-text">
+                Perspectiva fotorrealista de planta bajo normatividad HACCP/COFEPRIS con piso epóxico verde menta antibacterial, paneles sanitarios aislantes, tuberías clamp en acero SUS316L, paralelismo de 3 líneas de envasado y control PLC centralizado.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Plano Vectorial Técnico CAD Industrial -->
+        <div class="layout-view-panel" id="industrial-view-cad">
+          <div class="interactive-svg-wrap">
+            <svg viewBox="0 0 960 560" width="100%" height="560" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="20" width="920" height="520" rx="14" fill="#070a10" stroke="#06b6d4" stroke-width="3"/>
+              <rect x="20" y="20" width="920" height="520" fill="url(#smallGrid)"/>
+
+              <text x="480" y="45" fill="#64748b" font-size="12" text-anchor="middle">NAVE INDUSTRIAL DE ENVASADO Y PROCESO - 8.0 METROS</text>
+
+              <!-- Line 1: Insumos y Deshidratado (Left Column) -->
+              <g id="ind_prep">
+                <rect x="50" y="70" width="160" height="90" rx="8" fill="#121e28" stroke="#38bdf8" stroke-width="2"/>
+                <text x="130" y="105" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">TINA VORTEX SS304</text>
+                <text x="130" y="125" fill="#fff" font-size="10" text-anchor="middle">Lavado con Ozono</text>
+                <text x="130" y="142" fill="#94a3b8" font-size="9" text-anchor="middle">100 kg/hora</text>
+
+                <rect x="50" y="180" width="160" height="110" rx="8" fill="#241b14" stroke="#ea580c" stroke-width="2"/>
+                <text x="130" y="215" fill="#fb923c" font-size="12" font-weight="bold" text-anchor="middle">HORNO CT-C-I</text>
+                <text x="130" y="235" fill="#fcd34d" font-size="10" text-anchor="middle">48 Charolas Inox</text>
+                <text x="130" y="255" fill="#94a3b8" font-size="9" text-anchor="middle">Deshidratador Convector</text>
+                <text x="130" y="272" fill="#94a3b8" font-size="9" text-anchor="middle">Cap: 120 kg/lote</text>
+
+                <rect x="50" y="310" width="160" height="90" rx="8" fill="#151b28" stroke="#d4af37" stroke-width="2"/>
+                <text x="130" y="345" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">MOLINO WF-20B</text>
+                <text x="130" y="365" fill="#fff" font-size="10" text-anchor="middle">Pulverizador de Ajo</text>
+                <text x="130" y="382" fill="#94a3b8" font-size="9" text-anchor="middle">Hojuelas 2mm calibradas</text>
+
+                <rect x="50" y="420" width="160" height="90" rx="8" fill="#1a1c28" stroke="#06b6d4" stroke-width="2"/>
+                <text x="130" y="455" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">MOLINO COLUIDAL</text>
+                <text x="130" y="475" fill="#fff" font-size="10" text-anchor="middle">JMS-80 (Pasta Brava)</text>
+                <text x="130" y="492" fill="#34d399" font-size="9" text-anchor="middle">Molienda ultra-fina SS316</text>
+              </g>
+
+              <!-- Line 2: Tanque de Infusión Central -->
+              <g id="ind_infusion">
+                <rect x="270" y="180" width="180" height="180" rx="12" fill="#181c26" stroke="#d4af37" stroke-width="3"/>
+                <circle cx="360" cy="270" r="55" fill="#0d111a" stroke="#d4af37" stroke-width="2"/>
+                <text x="360" y="265" fill="#f3e5ab" font-size="13" font-weight="bold" text-anchor="middle">TANQUE TK-200L</text>
+                <text x="360" y="285" fill="#d4af37" font-size="10" text-anchor="middle">Infusor Enchaquetado</text>
+                <text x="360" y="302" fill="#94a3b8" font-size="9" text-anchor="middle">Control Temp 65°C</text>
+                <text x="360" y="340" fill="#34d399" font-size="11" font-weight="bold" text-anchor="middle">Mezcla Homogénea</text>
+              </g>
+
+              <!-- Line 3: Branching Envasado (Right Section) -->
+              <!-- Sub-line A: Frascos 130g -->
+              <g id="line_a">
+                <rect x="520" y="70" width="180" height="85" rx="8" fill="#181b24" stroke="#d4af37" stroke-width="2"/>
+                <text x="610" y="100" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA FRASCOS 130G</text>
+                <text x="610" y="120" fill="#fff" font-size="10" text-anchor="middle">Llenadora Pistón G2WY</text>
+                <text x="610" y="137" fill="#94a3b8" font-size="9" text-anchor="middle">Vel: 25 frascos/minuto</text>
+
+                <rect x="730" y="70" width="180" height="85" rx="8" fill="#181b24" stroke="#d4af37" stroke-width="2"/>
+                <text x="820" y="100" fill="#f3e5ab" font-size="12" font-weight="bold" text-anchor="middle">TAPADORA ZX-V</text>
+                <text x="820" y="120" fill="#34d399" font-size="10" text-anchor="middle">Vacío por Inyección Vapor</text>
+                <text x="820" y="137" fill="#94a3b8" font-size="9" text-anchor="middle">Cierre twist-off hermético</text>
+              </g>
+
+              <!-- Sub-line B: Pouches 50g con boquilla -->
+              <g id="line_b">
+                <rect x="520" y="190" width="390" height="85" rx="8" fill="#121e28" stroke="#38bdf8" stroke-width="2"/>
+                <text x="715" y="220" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA POUCHES SPOUT BGL-2 (50G & 70G)</text>
+                <text x="715" y="240" fill="#fff" font-size="10" text-anchor="middle">Llenado por la boquilla y enroscado automático de taparosca</text>
+                <text x="715" y="257" fill="#34d399" font-size="9" text-anchor="middle">Capacidad: 1,200 pouches/hora con precinto de seguridad</text>
+              </g>
+
+              <!-- Sub-line C: Sachets 15g para OXXO ($10) -->
+              <g id="line_c">
+                <rect x="520" y="310" width="390" height="95" rx="8" fill="#10201a" stroke="#10b981" stroke-width="2"/>
+                <text x="715" y="340" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">LÍNEA VERTICAL CONTINUA DXD-100 (SACHET $10)</text>
+                <text x="715" y="360" fill="#fff" font-size="10" text-anchor="middle">Formado, Llenado, Sellado en 4 lados y Muesca abre-fácil</text>
+                <text x="715" y="378" fill="#fcd34d" font-size="9" text-anchor="middle">Capacidad: 45 sobres/minuto (2,700 sobres/hora para retail)</text>
+              </g>
+
+              <!-- Packaging & Outfeed Tunnel -->
+              <g id="outfeed">
+                <rect x="520" y="435" width="390" height="75" rx="8" fill="#1c1626" stroke="#c084fc" stroke-width="2"/>
+                <text x="715" y="465" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">ZONA DE ETIQUETADO, LOTEADO TIJ & PALETIZADO</text>
+                <text x="715" y="488" fill="#94a3b8" font-size="10" text-anchor="middle">Impresión de Caducidad Inkjet, encartonado y control de calidad Gate 1</text>
+              </g>
+
+              <!-- Connecting animated piping -->
+              <path d="M 210 235 L 270 235" stroke="#ea580c" stroke-width="2" class="flow-line"/>
+              <path d="M 210 355 Q 240 355 240 300 L 270 300" stroke="#d4af37" stroke-width="2" class="flow-line" fill="none"/>
+              <path d="M 450 250 L 520 110" stroke="#d4af37" stroke-width="2" class="flow-line"/>
+              <path d="M 450 270 L 520 230" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+              <path d="M 450 290 L 520 350" stroke="#10b981" stroke-width="2" class="flow-line"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Macro Feature Card: Maquinaria Pesada Industrial -->
+      <div class="macro-feature-card">
+        <div class="macro-feature-img-wrap">
+          <img src="assets/images/produccion/maquinaria_pesada_industrial_closeup.jpg" alt="Detalle Macro de Maquinaria Industrial SUS316L" class="macro-feature-img">
+        </div>
+        <div class="macro-feature-content">
+          <span class="dim-tag" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border-color: rgba(6, 182, 212, 0.4); margin-bottom: 12px; display: inline-block;">
+            Ingeniería de Procesos Continuos
+          </span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fff; margin-bottom: 14px;">
+            Molino Coloidal SUS316L & Cerradora al Vacío por Vapor
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+            <strong>1. Molienda Coloidal de Alta Cizalla (Pasta Brava):</strong> Con un gap micrométrico ajustable de hasta 50 micras entre el rotor y estator cónicos de acero inoxidable SUS316L a 2,900 RPM, los sólidos de habanero, ajo tostado y aceite de oliva sufren una dispersión homogénea extrema sin calentar el producto, logrando una emulsión estable que jamás se separa en anaquel.
+          </p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+            <strong>2. Tapado al Vacío por Inyección de Micro-Vapor (ZX-V):</strong> En la línea automática, cada frasco pasa bajo un túnel que inyecta una ráfaga de vapor seco saturado a 110°C en el espacio de cabeza milisegundos antes del enroscado de la tapa metálica twist-off. El vapor desplaza el 98% del oxígeno residual; al salir del cabezal magnético, el vapor condensa instantáneamente generando un vacío de grado farmacéutico comercial sin someter la salsa a calor prolongado.
+          </p>
+          <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: #38bdf8;">
+            ⚡ <strong>Rendimiento Industrial:</strong> 1,200 a 2,400 frascos por hora con monitoreo de par de apriete (torque) y verificación automática de hermeticidad acústica.
+          </div>
+        </div>
+      </div>
       </div>
 
       <!-- Cost Table Industrial -->
@@ -1193,5 +1410,28 @@
     </div>
   </footer>
 
+  <!-- Interactive View Switcher Logic -->
+  <script>
+    function switchLayoutView(stage, mode) {
+      const photoPanel = document.getElementById(`${stage}-view-photo`);
+      const cadPanel = document.getElementById(`${stage}-view-cad`);
+      const btnPhoto = document.getElementById(`btn-${stage}-photo`);
+      const btnCad = document.getElementById(`btn-${stage}-cad`);
+
+      if (!photoPanel || !cadPanel || !btnPhoto || !btnCad) return;
+
+      if (mode === 'photo') {
+        photoPanel.classList.add('active');
+        cadPanel.classList.remove('active');
+        btnPhoto.classList.add('active');
+        btnCad.classList.remove('active');
+      } else {
+        photoPanel.classList.remove('active');
+        cadPanel.classList.add('active');
+        btnPhoto.classList.remove('active');
+        btnCad.classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>

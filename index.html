@@ -835,6 +835,17 @@
       object-fit: cover;
     }
 
+    .hub-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .hub-card:hover .hub-thumb-img {
+      transform: scale(1.06);
+    }
+
     .hub-badge {
       position: absolute;
       top: 14px;
@@ -1031,28 +1042,8 @@
           <!-- Thumbnail Link 1: Manufactura Casera / Taller Piloto -->
           <a href="produccion.html#etapa-casera" class="hub-card">
             <div class="hub-thumb-wrap">
-              <svg class="hub-thumb-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                <rect width="400" height="220" fill="#111520"/>
-                <pattern id="gridIndex1" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(234, 88, 12, 0.12)" stroke-width="1"/>
-                </pattern>
-                <rect width="400" height="220" fill="url(#gridIndex1)"/>
-                <rect x="50" y="30" width="300" height="160" rx="8" fill="rgba(234, 88, 12, 0.08)" stroke="#ea580c" stroke-width="2"/>
-                <text x="65" y="55" fill="#fb923c" font-size="12" font-family="'Cinzel', serif" font-weight="bold">TALLER PILOTO (16 m²)</text>
-                <rect x="70" y="80" width="50" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-                <text x="80" y="105" fill="#fff" font-size="9">LAVADO</text>
-                <rect x="135" y="80" width="55" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-                <text x="145" y="105" fill="#fff" font-size="9">HORNO</text>
-                <rect x="205" y="80" width="60" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-                <text x="212" y="105" fill="#fff" font-size="9">LICUADORA</text>
-                <rect x="280" y="80" width="55" height="40" rx="4" fill="#1e2433" stroke="#ea580c"/>
-                <text x="290" y="105" fill="#fff" font-size="9">LLENADO</text>
-                <rect x="170" y="135" width="80" height="40" rx="4" fill="#1e2433" stroke="#10b981"/>
-                <text x="180" y="160" fill="#34d399" font-size="9">BAÑO MARÍA</text>
-                <path d="M 120 100 L 135 100 M 190 100 L 205 100 M 265 100 L 280 100" stroke="#fb923c" stroke-width="2" class="flow-line"/>
-                <path d="M 305 120 L 305 155 L 250 155" stroke="#34d399" stroke-width="2" class="flow-line"/>
-              </svg>
-              <span class="hub-badge badge-casera">Link 1 • Manufactura Casera / Piloto</span>
+              <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Render Fotográfico Realista Taller Piloto 16m²" class="hub-thumb-img">
+              <span class="hub-badge badge-casera">Link 1 • Manufactura Casera / Piloto (16 m²)</span>
             </div>
             <div class="hub-body">
               <h3 class="hub-title">Etapa 1: Manufactura Casera / Piloto</h3>
@@ -1080,31 +1071,8 @@
           <!-- Thumbnail Link 2: Planta Industrializada -->
           <a href="produccion.html#etapa-industrial" class="hub-card">
             <div class="hub-thumb-wrap">
-              <svg class="hub-thumb-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                <rect width="400" height="220" fill="#0c131e"/>
-                <pattern id="gridIndex2" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(6, 182, 212, 0.15)" stroke-width="1"/>
-                </pattern>
-                <rect width="400" height="220" fill="url(#gridIndex2)"/>
-                <rect x="40" y="25" width="320" height="170" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="#06b6d4" stroke-width="2"/>
-                <text x="55" y="48" fill="#38bdf8" font-size="12" font-family="'Cinzel', serif" font-weight="bold">PLANTA INDUSTRIAL (64 m²)</text>
-                <rect x="55" y="70" width="45" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
-                <text x="60" y="92" fill="#fff" font-size="8">CT-C HORNO</text>
-                <rect x="110" y="70" width="45" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
-                <text x="115" y="92" fill="#fff" font-size="8">PULVERIZ</text>
-                <rect x="165" y="70" width="55" height="35" rx="3" fill="#141e2e" stroke="#06b6d4"/>
-                <text x="170" y="92" fill="#fff" font-size="8">TANQUE INF</text>
-                <rect x="240" y="60" width="55" height="30" rx="3" fill="#141e2e" stroke="#d4af37"/>
-                <text x="245" y="80" fill="#f3e5ab" font-size="8">G1WY VIDRIO</text>
-                <rect x="300" y="60" width="50" height="30" rx="3" fill="#141e2e" stroke="#d4af37"/>
-                <text x="305" y="80" fill="#f3e5ab" font-size="8">ZX-V CAP</text>
-                <rect x="240" y="100" width="55" height="30" rx="3" fill="#141e2e" stroke="#38bdf8"/>
-                <text x="245" y="120" fill="#38bdf8" font-size="8">BGL POUCH</text>
-                <rect x="240" y="140" width="55" height="30" rx="3" fill="#141e2e" stroke="#10b981"/>
-                <text x="245" y="160" fill="#34d399" font-size="8">DXD SACHET</text>
-                <path d="M 100 88 L 110 88 M 155 88 L 165 88 M 220 88 L 235 75 M 220 88 L 235 115 M 220 88 L 235 155" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
-              </svg>
-              <span class="hub-badge badge-industrial">Link 2 • Planta Industrializada</span>
+              <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Render Fotográfico Realista Planta Industrial 64m²" class="hub-thumb-img">
+              <span class="hub-badge badge-industrial">Link 2 • Planta Industrializada (64 m²)</span>
             </div>
             <div class="hub-body">
               <h3 class="hub-title">Etapa 2: Planta Industrializada</h3>
