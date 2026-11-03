@@ -400,6 +400,138 @@
       align-items: center;
     }
 
+    /* Clean Machinery Photo Gallery (Sin leyendas estorbosas ni frames) */
+    .clean-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin: 30px 0 60px;
+    }
+
+    .clean-gallery-item {
+      background: #090c14;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .clean-gallery-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    .clean-gallery-img-wrap {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background: #05070a;
+    }
+
+    .clean-gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .clean-gallery-item:hover .clean-gallery-img {
+      transform: scale(1.05);
+    }
+
+    .clean-gallery-caption {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: #0d111a;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .clean-gallery-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .clean-gallery-meta {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* Output Capacity Metric Cards */
+    .output-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin: 30px 0 50px;
+    }
+
+    .output-card {
+      background: rgba(15, 19, 28, 0.92);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .output-card.gold-border {
+      border-color: rgba(234, 88, 12, 0.4);
+    }
+
+    .output-card.cyan-border {
+      border-color: rgba(6, 182, 212, 0.4);
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .output-value-big {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .output-unit {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .output-detail-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .output-detail-list li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+      padding-bottom: 6px;
+    }
+    }
+
     @media (max-width: 920px) {
       .macro-feature-card {
         grid-template-columns: 1fr;
@@ -780,8 +912,10 @@
       </a>
       <div class="nav-links">
         <a href="index.html" class="nav-btn">← Volver a Presentaciones</a>
-        <a href="#etapa-casera" class="nav-btn">Manufactura Piloto (Casera)</a>
-        <a href="#etapa-industrial" class="nav-btn">Planta Industrializada</a>
+        <a href="#seccion-output" class="nav-btn" style="color: var(--gold-light);">📊 Capacidad & Output</a>
+        <a href="#etapa-casera" class="nav-btn">Piloto (16 m²)</a>
+        <a href="#etapa-industrial" class="nav-btn">Industrial (64 m²)</a>
+        <a href="#galeria-maquinaria" class="nav-btn" style="color: #38bdf8;">📸 Galería de Fotos</a>
         <a href="index.html#showcase" class="btn-gold">Catálogo de Frascos</a>
       </div>
     </div>
@@ -890,24 +1024,13 @@
           <button class="view-btn" id="btn-casera-cad" onclick="switchLayoutView('casera', 'cad')">📐 Plano Técnico CAD (Cotas & Servicios)</button>
         </div>
 
-        <!-- Panel 1: Render Fotográfico Realista 3D -->
+        <!-- Panel 1: Render Fotográfico Realista 3D (Limpio, sin leyendas ni frames) -->
         <div class="layout-view-panel active" id="casera-view-photo">
           <div class="realistic-photo-wrap">
-            <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Render Fotográfico Realista Taller Piloto 16m²" class="realistic-photo-img">
-            
-            <!-- Floating Hotspots -->
-            <div class="photo-hotspot" style="top: 26%; left: 10%;">🧄 Tarja & Pelado</div>
-            <div class="photo-hotspot" style="top: 22%; left: 34%;">🔥 Horno Pan/Pizza San-Son</div>
-            <div class="photo-hotspot" style="top: 36%; left: 54%;">🌪️ Licuadora Volteo 20L</div>
-            <div class="photo-hotspot" style="top: 48%; left: 78%;">🧴 Dosificadora Neumática</div>
-            <div class="photo-hotspot" style="top: 68%; left: 44%;">♨️ Tina Baño María 100L</div>
-
-            <div class="photo-overlay-caption">
-              <div class="photo-caption-title">Taller Piloto Gastronómico (16 m² • 4.0m × 4.0m)</div>
-              <div class="photo-caption-text">
-                Perspectiva fotorrealista de la nave artesanal con flujo continuo higiénico en "U". Diseñado para operar con 2 técnicos, paredes lavables antibacteriales, piso epóxico con drenaje central de rejilla inoxidable, campana de extracción y estaciones de acero SUS304.
-              </div>
-            </div>
+            <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Fotografía Realista Taller Piloto 16m²" class="realistic-photo-img">
+          </div>
+          <div style="margin-top: 10px; font-size: 0.82rem; color: var(--text-dim); text-align: center;">
+            Fotografía de Taller Piloto Gastronómico (16 m² • 4.0×4.0m) • Tarja de lavado, Horno de gaveta, Licuadora industrial 20L, Dosificadora de tolva y Tina de Baño María.
           </div>
         </div>
 
@@ -1155,24 +1278,13 @@
           <button class="view-btn view-btn-industrial" id="btn-industrial-cad" onclick="switchLayoutView('industrial', 'cad')">📐 Plano Técnico CAD (Cotas & Servicios)</button>
         </div>
 
-        <!-- Panel 1: Render Fotográfico Realista 3D Industrial -->
+        <!-- Panel 1: Render Fotográfico Realista 3D Industrial (Limpio, sin leyendas ni frames) -->
         <div class="layout-view-panel active" id="industrial-view-photo">
           <div class="realistic-photo-wrap">
-            <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Render Fotográfico Realista Planta Industrial 64m²" class="realistic-photo-img">
-            
-            <!-- Floating Hotspots -->
-            <div class="photo-hotspot cyan" style="top: 24%; left: 16%;">♨️ Horno Convector CT-C</div>
-            <div class="photo-hotspot cyan" style="top: 38%; left: 36%;">🍲 Reactor Tanque 200L</div>
-            <div class="photo-hotspot cyan" style="top: 54%; left: 24%;">⚙️ Molino Coloidal SUS316L</div>
-            <div class="photo-hotspot cyan" style="top: 40%; left: 68%;">🍾 Línea Llenado & Tapado ZX-V</div>
-            <div class="photo-hotspot cyan" style="top: 65%; left: 82%;">🛍️ Envasadora VFFS Sachets $10</div>
-
-            <div class="photo-overlay-caption">
-              <div class="photo-caption-title" style="color: #38bdf8;">Planta Industrial Automatizada (64 m² • 8.0m × 8.0m)</div>
-              <div class="photo-caption-text">
-                Perspectiva fotorrealista de planta bajo normatividad HACCP/COFEPRIS con piso epóxico verde menta antibacterial, paneles sanitarios aislantes, tuberías clamp en acero SUS316L, paralelismo de 3 líneas de envasado y control PLC centralizado.
-              </div>
-            </div>
+            <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Fotografía Realista Planta Industrial 64m²" class="realistic-photo-img">
+          </div>
+          <div style="margin-top: 10px; font-size: 0.82rem; color: var(--text-dim); text-align: center;">
+            Fotografía de Nave Industrial Automatizada (64 m² • 8.0×8.0m) • Horno deshidratador continuo, Reactor encamisado 200L, Molino coloidal SUS316L, Línea de envasado y VFFS.
           </div>
         </div>
 
@@ -1377,6 +1489,339 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Output & Capacidad de Producción Comparativa -->
+  <section class="plan-section" id="seccion-output" style="background: rgba(15, 19, 28, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="dim-tag" style="background: rgba(212, 175, 55, 0.15); color: var(--gold-light); border-color: var(--border-soft);">
+          Métricas Operativas & Rendimiento
+        </span>
+        <h2 class="section-title">¿Cuánto Output Tiene Cada Opción de Producción?</h2>
+        <p class="section-desc">
+          Análisis determinista de rendimiento volumétrico, capacidad por turno, cuellos de botella y proyección mensual para el arranque artesanal vs la escala industrial continua.
+        </p>
+      </div>
+
+      <!-- Output Metric Cards -->
+      <div class="output-metrics-grid">
+        <!-- Card 1: Piloto Casero -->
+        <div class="output-card gold-border">
+          <div class="output-header">
+            <span class="dim-tag" style="background: rgba(234, 88, 12, 0.15); color: #fb923c; border-color: rgba(234, 88, 12, 0.4);">
+              Opción 1 • Taller Piloto (16 m²)
+            </span>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">2 Operadores</span>
+          </div>
+          <div class="output-value-big" style="color: #fb923c;">300–400</div>
+          <div class="output-unit">Frascos de 130g por jornada (8 horas)</div>
+          
+          <ul class="output-detail-list">
+            <li>
+              <span>Rendimiento por Hora:</span>
+              <strong style="color: #fff;">40 a 55 frascos/h</strong>
+            </li>
+            <li>
+              <span>Volumen Diario Terminado:</span>
+              <strong style="color: #fff;">39 a 52 kg de salsa</strong>
+            </li>
+            <li>
+              <span>Capacidad Mensual (20 días):</span>
+              <strong style="color: #fb923c;">6,000 a 8,000 frascos</strong>
+            </li>
+            <li>
+              <span>Valor Bruto a PVP ($120):</span>
+              <strong style="color: #34d399;">$720k – $960k MXN/mes</strong>
+            </li>
+            <li>
+              <span>Cuello de Botella Operativo:</span>
+              <strong style="color: #f87171;">Baño María (45 frascos/25 min)</strong>
+            </li>
+            <li>
+              <span>Inversión en Maquinaria:</span>
+              <strong style="color: #fff;">$109,000 MXN</strong>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Industrial Frascos -->
+        <div class="output-card cyan-border">
+          <div class="output-header">
+            <span class="dim-tag" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border-color: rgba(6, 182, 212, 0.4);">
+              Opción 2 • Línea Frascos Cristal
+            </span>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Llenado + Vacío ZX-V</span>
+          </div>
+          <div class="output-value-big" style="color: #38bdf8;">9,600–12,000</div>
+          <div class="output-unit">Frascos de 130g por jornada (8 horas)</div>
+          
+          <ul class="output-detail-list">
+            <li>
+              <span>Rendimiento por Hora:</span>
+              <strong style="color: #fff;">1,200 a 1,500 frascos/h</strong>
+            </li>
+            <li>
+              <span>Volumen Diario Terminado:</span>
+              <strong style="color: #fff;">1,250 a 1,560 kg de salsa</strong>
+            </li>
+            <li>
+              <span>Capacidad Mensual (20 días):</span>
+              <strong style="color: #38bdf8;">190k a 240k frascos</strong>
+            </li>
+            <li>
+              <span>Velocidad de Tapado al Vacío:</span>
+              <strong style="color: #34d399;">20 a 25 frascos/minuto</strong>
+            </li>
+            <li>
+              <span>Suministro Requerido:</span>
+              <strong style="color: #fff;">Tanque 200L enchaquetado</strong>
+            </li>
+            <li>
+              <span>Costo Maquinaria Línea:</span>
+              <strong style="color: #fff;">$6,700 USD</strong>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Industrial Sachets Retail OXXO -->
+        <div class="output-card cyan-border">
+          <div class="output-header">
+            <span class="dim-tag" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.4);">
+              Opción 2 • Envasado VFFS Sachets
+            </span>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Retail & Tiendas OXXO</span>
+          </div>
+          <div class="output-value-big" style="color: #34d399;">21,600–28,800</div>
+          <div class="output-unit">Sachets de $10 MXN (15g) por jornada</div>
+          
+          <ul class="output-detail-list">
+            <li>
+              <span>Rendimiento por Minuto:</span>
+              <strong style="color: #fff;">45 a 60 sachets/min</strong>
+            </li>
+            <li>
+              <span>Rendimiento por Hora:</span>
+              <strong style="color: #fff;">2,700 a 3,600 sachets/h</strong>
+            </li>
+            <li>
+              <span>Capacidad Mensual (20 días):</span>
+              <strong style="color: #34d399;">430k a 570k sachets</strong>
+            </li>
+            <li>
+              <span>Valor Bruto Retail a $10 MXN:</span>
+              <strong style="color: #34d399;">$4.3M – $5.7M MXN/mes</strong>
+            </li>
+            <li>
+              <span>Tipo de Formado y Sellado:</span>
+              <strong style="color: #fff;">4 sellos con muesca abre-fácil</strong>
+            </li>
+            <li>
+              <span>Costo Maquinaria VFFS:</span>
+              <strong style="color: #fff;">$5,400 USD ($106k MXN)</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comparative Output Table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Parámetro Operativo</th>
+              <th>Opción 1: Taller Piloto (16 m²)</th>
+              <th>Opción 2: Planta Industrial (64 m²)</th>
+              <th>Factor de Escala</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Output en Frascos 130g (por hora)</strong></td>
+              <td>40 – 55 frascos/h</td>
+              <td>1,200 – 1,500 frascos/h</td>
+              <td><span class="tag-model">25× a 30×</span></td>
+            </tr>
+            <tr>
+              <td><strong>Output en Frascos 130g (Turno 8h)</strong></td>
+              <td>300 – 400 frascos/día</td>
+              <td>9,600 – 12,000 frascos/día</td>
+              <td><span class="tag-model">30× mayor</span></td>
+            </tr>
+            <tr>
+              <td><strong>Línea Sachets $10 MXN (Turno 8h)</strong></td>
+              <td>No viable (llenado manual lento)</td>
+              <td>21,600 – 28,800 sobres/día</td>
+              <td><span class="tag-model">Exclusivo VFFS</span></td>
+            </tr>
+            <tr>
+              <td><strong>Línea Pouches Spout 50g (Turno 8h)</strong></td>
+              <td>60 – 100 pouches/día (manual)</td>
+              <td>8,000 – 9,600 pouches/día</td>
+              <td><span class="tag-model">80× mayor</span></td>
+            </tr>
+            <tr>
+              <td><strong>Volumen Diario de Salsa Neta</strong></td>
+              <td>~40 – 52 kg/día</td>
+              <td>~1,500 – 2,500 kg/día</td>
+              <td><span class="tag-model">50× mayor</span></td>
+            </tr>
+            <tr>
+              <td><strong>Personal Requerido por Turno</strong></td>
+              <td>2 operadores gastronómicos</td>
+              <td>4 operadores + 1 supervisor</td>
+              <td><span class="tag-model">2.5× personal</span></td>
+            </tr>
+            <tr>
+              <td><strong>Cuello de Botella Principal</strong></td>
+              <td>Capacidad y enfriado de Baño María</td>
+              <td>Suministro de habanero deshidratado</td>
+              <td><span class="tag-model">Térmico vs MP</span></td>
+            </tr>
+            <tr>
+              <td><strong>Costo de Mano de Obra por Frasco</strong></td>
+              <td>~$3.20 MXN / frasco</td>
+              <td>~$0.28 MXN / frasco</td>
+              <td><span class="tag-model">91% ahorro MO</span></td>
+            </tr>
+            <tr>
+              <td><strong>Inversión Total Maquinaria</strong></td>
+              <td style="color: #fb923c;"><strong>$109,000 MXN</strong></td>
+              <td style="color: #38bdf8;"><strong>$555,100 MXN ($28,200 USD)</strong></td>
+              <td><span class="tag-model">5.1× inversión</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Galería de Maquinaria & Equipos (Fotografías Reales Limpias) -->
+  <section class="plan-section" id="galeria-maquinaria">
+    <div class="container">
+      <div class="section-header">
+        <span class="dim-tag" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border-color: rgba(6, 182, 212, 0.4);">
+          Fotografías Reales de Catálogo
+        </span>
+        <h2 class="section-title">Galería de Maquinaria & Estaciones de Proceso</h2>
+        <p class="section-desc">
+          Fotografías de estudio de cada máquina gastronómica e industrial, sin leyendas sobre la imagen ni marcos artificiales.
+        </p>
+      </div>
+
+      <!-- Clean Photo Grid -->
+      <div class="clean-gallery-grid">
+        <!-- Photo 1: Horno Pizza Inox -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/foto_horno_pan_pizza_inox.jpg" alt="Horno de Gaveta Industrial Acero Inox" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Horno de Gaveta para Panadería / Pizza</div>
+            <div class="clean-gallery-meta">Acero Inox cepillado • Tostado de habanero inflado y ajo morado</div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Licuadora Industrial Volteo 20L -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/foto_licuadora_industrial_volteo_20l.jpg" alt="Licuadora Industrial de Volteo 20L" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Licuadora Industrial Basculante de Volteo 20L</div>
+            <div class="clean-gallery-meta">Acero SUS304 • Motor 2 HP • Emulsión con Aceite de Oliva EV</div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Dosificadora Neumatica Tolva -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/foto_dosificadora_neumatica_tolva.jpg" alt="Dosificadora Neumática de Tolva Cónica" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Dosificadora Neumática de Pistón con Tolva 30L</div>
+            <div class="clean-gallery-meta">Corte cónico antigoteo • Dosifica 130g en 2 segundos con pedal</div>
+          </div>
+        </div>
+
+        <!-- Photo 4: Tina Baño María -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/foto_tina_bano_maria_frascos.jpg" alt="Tina Pasteurizadora Baño María con Frascos" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Tina Pasteurizadora Baño María (Inmersión 100L)</div>
+            <div class="clean-gallery-meta">Canastilla perforada con frascos • Vacío de 10–15 inHg a 85°C</div>
+          </div>
+        </div>
+
+        <!-- Photo 5: Molino Coloidal SUS316L -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/foto_molino_coloidal_industrial_sus316.jpg" alt="Molino Coloidal Sanitario SUS316L" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Molino Coloidal Industrial Sanitario SUS316L</div>
+            <div class="clean-gallery-meta">Gap micrométrico de 50µm • Molienda ultra-fina para Pasta Brava</div>
+          </div>
+        </div>
+
+        <!-- Photo 6: Envasadora Vertical VFFS -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/foto_envasadora_vffs_sachets_salsa.jpg" alt="Envasadora Vertical VFFS para Sachets" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Envasadora Vertical Automática VFFS (Sachets $10)</div>
+            <div class="clean-gallery-meta">45–60 sobres/min • Formado, llenado y sellado continuo para OXXO</div>
+          </div>
+        </div>
+
+        <!-- Photo 7: Macro Dosificado & Baño María -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/dosificado_y_bano_maria_piloto_macro.jpg" alt="Detalle Macro de Dosificado y Baño María" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Macro: Dosificado Volumétrico & Frasco Gourmet</div>
+            <div class="clean-gallery-meta">Llenado preciso de 130g de salsa ámbar e inmersión térmica</div>
+          </div>
+        </div>
+
+        <!-- Photo 8: Maquinaria Pesada Cerradora al Vacío -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/maquinaria_pesada_industrial_closeup.jpg" alt="Detalle Maquinaria Pesada Cierre al Vacío" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Macro: Cerradora Twist-Off con Inyección de Vapor</div>
+            <div class="clean-gallery-meta">Cierre hermético instantáneo a 1,500 frascos/h grado alimentario</div>
+          </div>
+        </div>
+
+        <!-- Photo 9: Perspectiva Taller Piloto 16 m² -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Perspectiva Taller Piloto 16 m²" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Perspectiva Fotográfica: Taller Piloto (16 m²)</div>
+            <div class="clean-gallery-meta">Distribución en "U" • 4.0×4.0m • Capacidad 300–400 frascos/día</div>
+          </div>
+        </div>
+
+        <!-- Photo 10: Perspectiva Planta Industrial 64 m² -->
+        <div class="clean-gallery-item">
+          <div class="clean-gallery-img-wrap">
+            <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Perspectiva Planta Industrial 64 m²" class="clean-gallery-img">
+          </div>
+          <div class="clean-gallery-caption">
+            <div class="clean-gallery-title">Perspectiva Fotográfica: Planta Industrial (64 m²)</div>
+            <div class="clean-gallery-meta">Nave HACCP • 8.0×8.0m • Capacidad >10,000 frascos + sachets/día</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
