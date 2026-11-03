@@ -400,67 +400,101 @@
       align-items: center;
     }
 
-    /* Clean Machinery Photo Gallery (Sin leyendas estorbosas ni frames) */
-    .clean-gallery-grid {
+    /* Financial Analysis Cards & Badges */
+    .financial-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-      margin: 30px 0 60px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 26px;
+      margin: 30px 0 50px;
     }
 
-    .clean-gallery-item {
-      background: #090c14;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      overflow: hidden;
+    .fin-card {
+      background: rgba(15, 19, 28, 0.95);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .clean-gallery-item:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.2);
+    .fin-card.piloto {
+      border-color: rgba(234, 88, 12, 0.4);
+      background: radial-gradient(circle at 100% 0%, rgba(234, 88, 12, 0.08) 0%, rgba(15, 19, 28, 0.95) 70%);
     }
 
-    .clean-gallery-img-wrap {
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
-      background: #05070a;
+    .fin-card.industrial {
+      border-color: rgba(6, 182, 212, 0.4);
+      background: radial-gradient(circle at 100% 0%, rgba(6, 182, 212, 0.08) 0%, rgba(15, 19, 28, 0.95) 70%);
     }
 
-    .clean-gallery-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .clean-gallery-item:hover .clean-gallery-img {
-      transform: scale(1.05);
-    }
-
-    .clean-gallery-caption {
-      padding: 16px 20px;
+    .fin-header {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
-      background: #0d111a;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .clean-gallery-title {
-      font-weight: 700;
-      font-size: 0.95rem;
+    .fin-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
       color: #fff;
     }
 
-    .clean-gallery-meta {
-      font-size: 0.78rem;
+    .fin-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .fin-kpi-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .fin-kpi-label {
+      font-size: 0.72rem;
       color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .fin-kpi-value {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .break-even-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin: 10px 0 16px;
+    }
+
+    .formula-box {
+      background: #090c14;
+      border: 1px dashed rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      margin: 12px 0;
     }
 
     /* Output Capacity Metric Cards */
@@ -913,9 +947,9 @@
       <div class="nav-links">
         <a href="index.html" class="nav-btn">← Volver a Presentaciones</a>
         <a href="#seccion-output" class="nav-btn" style="color: var(--gold-light);">📊 Capacidad & Output</a>
+        <a href="#seccion-finanzas" class="nav-btn" style="color: #34d399;">💰 Análisis Financiero & ROI</a>
         <a href="#etapa-casera" class="nav-btn">Piloto (16 m²)</a>
         <a href="#etapa-industrial" class="nav-btn">Industrial (64 m²)</a>
-        <a href="#galeria-maquinaria" class="nav-btn" style="color: #38bdf8;">📸 Galería de Fotos</a>
         <a href="index.html#showcase" class="btn-gold">Catálogo de Frascos</a>
       </div>
     </div>
@@ -1698,130 +1732,260 @@
     </div>
   </section>
 
-  <!-- Section 4: Galería de Maquinaria & Equipos (Fotografías Reales Limpias) -->
-  <section class="plan-section" id="galeria-maquinaria">
+  <!-- Section 4: Análisis Financiero, Punto de Equilibrio & ROI -->
+  <section class="plan-section" id="seccion-finanzas">
     <div class="container">
       <div class="section-header">
-        <span class="dim-tag" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8; border-color: rgba(6, 182, 212, 0.4);">
-          Fotografías Reales de Catálogo
+        <span class="dim-tag" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.4);">
+          Modelo Financiero & Retorno de Inversión
         </span>
-        <h2 class="section-title">Galería de Maquinaria & Estaciones de Proceso</h2>
+        <h2 class="section-title">Análisis Financiero, Punto de Equilibrio & ROI</h2>
         <p class="section-desc">
-          Fotografías de estudio de cada máquina gastronómica e industrial, sin leyendas sobre la imagen ni marcos artificiales.
+          Evaluación financiera determinista bajo la metodología IN2TECHMX. Desglose de costos fijos, costos variables unitarios por presentación, punto de equilibrio y tiempo de recuperación de capital.
         </p>
       </div>
 
-      <!-- Clean Photo Grid -->
-      <div class="clean-gallery-grid">
-        <!-- Photo 1: Horno Pizza Inox -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/foto_horno_pan_pizza_inox.jpg" alt="Horno de Gaveta Industrial Acero Inox" class="clean-gallery-img">
+      <!-- Financial Cards Grid -->
+      <div class="financial-grid">
+        <!-- Card 1: Piloto Casero -->
+        <div class="fin-card piloto">
+          <div class="fin-header">
+            <div>
+              <span class="dim-tag" style="background: rgba(234, 88, 12, 0.2); color: #fb923c; border-color: rgba(234, 88, 12, 0.5);">
+                Etapa 1: Taller Piloto (16 m²)
+              </span>
+              <h3 class="fin-title" style="margin-top: 8px;">Finanzas de Arranque Artesanal</h3>
+            </div>
           </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Horno de Gaveta para Panadería / Pizza</div>
-            <div class="clean-gallery-meta">Acero Inox cepillado • Tostado de habanero inflado y ajo morado</div>
+
+          <div class="fin-kpi-row">
+            <div class="fin-kpi-box">
+              <div class="fin-kpi-label">CAPEX Total Arranque</div>
+              <div class="fin-kpi-value" style="color: #fb923c;">$134,000</div>
+              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">$109k equipo + $25k adecuación</div>
+            </div>
+            <div class="fin-kpi-box">
+              <div class="fin-kpi-label">Margen Bruto Unitario</div>
+              <div class="fin-kpi-value" style="color: #34d399;">77.5%</div>
+              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">$93.00 MXN ganancia / frasco</div>
+            </div>
           </div>
+
+          <div class="break-even-pill">
+            <span>🎯</span> <strong>Punto de Equilibrio: 269 frascos/mes</strong> ($32,280 MXN)
+          </div>
+
+          <div class="formula-box">
+            Q_pe = Costos Fijos ($25,000) ÷ Margen Contribución ($93.00) = 269 frascos
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 14px;">
+            * Nota operativa: Produciendo 350 frascos/día, el punto de equilibrio mensual se cubre en <strong>menos de 1 día de producción</strong>.
+          </p>
+
+          <ul class="output-detail-list">
+            <li>
+              <span>Precio de Venta al Público (PVP):</span>
+              <strong style="color: #fff;">$120.00 MXN</strong>
+            </li>
+            <li>
+              <span>Costo Variable Unitario (CV_u):</span>
+              <strong style="color: #f87171;">$27.00 MXN</strong>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Habanero + Ajo tostado:</span>
+              <span>$8.70 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Aceite de Oliva Extra Virgen:</span>
+              <span>$8.80 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Frasco vidrio 130g + Tapa twist:</span>
+              <span>$6.50 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Etiqueta laminada + sello lacre:</span>
+              <span>$1.80 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Gas LP + Luz + Agua:</span>
+              <span>$1.20 MXN</span>
+            </li>
+            <li>
+              <span>Costos Fijos Mensuales (CF):</span>
+              <strong style="color: #fb923c;">$25,000 MXN / mes</strong>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Renta taller/cocina 16m²:</span>
+              <span>$8,000 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• 2 Técnicos gastronómicos:</span>
+              <span>$15,000 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Mantenimiento e insumos:</span>
+              <span>$2,000 MXN</span>
+            </li>
+            <li>
+              <span>Utilidad Neta Mensual (a 6,000 frascos):</span>
+              <strong style="color: #34d399;">$425,000 MXN / mes</strong>
+            </li>
+            <li>
+              <span>Retorno de Inversión (Payback):</span>
+              <strong style="color: #34d399;">0.32 meses (~10 días)</strong>
+            </li>
+          </ul>
         </div>
 
-        <!-- Photo 2: Licuadora Industrial Volteo 20L -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/foto_licuadora_industrial_volteo_20l.jpg" alt="Licuadora Industrial de Volteo 20L" class="clean-gallery-img">
+        <!-- Card 2: Planta Industrial -->
+        <div class="fin-card industrial">
+          <div class="fin-header">
+            <div>
+              <span class="dim-tag" style="background: rgba(6, 182, 212, 0.2); color: #38bdf8; border-color: rgba(6, 182, 212, 0.5);">
+                Etapa 2: Planta Industrial (64 m²)
+              </span>
+              <h3 class="fin-title" style="margin-top: 8px;">Economías de Escala & Retail</h3>
+            </div>
           </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Licuadora Industrial Basculante de Volteo 20L</div>
-            <div class="clean-gallery-meta">Acero SUS304 • Motor 2 HP • Emulsión con Aceite de Oliva EV</div>
-          </div>
-        </div>
 
-        <!-- Photo 3: Dosificadora Neumatica Tolva -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/foto_dosificadora_neumatica_tolva.jpg" alt="Dosificadora Neumática de Tolva Cónica" class="clean-gallery-img">
+          <div class="fin-kpi-row">
+            <div class="fin-kpi-box">
+              <div class="fin-kpi-label">CAPEX Total Instalado</div>
+              <div class="fin-kpi-value" style="color: #38bdf8;">$875,100</div>
+              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">$555k maquinaria + aduana + nave</div>
+            </div>
+            <div class="fin-kpi-box">
+              <div class="fin-kpi-label">Margen Bruto Frascos</div>
+              <div class="fin-kpi-value" style="color: #34d399;">83.8%</div>
+              <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">$100.50 MXN ganancia / frasco</div>
+            </div>
           </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Dosificadora Neumática de Pistón con Tolva 30L</div>
-            <div class="clean-gallery-meta">Corte cónico antigoteo • Dosifica 130g en 2 segundos con pedal</div>
-          </div>
-        </div>
 
-        <!-- Photo 4: Tina Baño María -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/foto_tina_bano_maria_frascos.jpg" alt="Tina Pasteurizadora Baño María con Frascos" class="clean-gallery-img">
+          <div class="break-even-pill" style="background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.35); color: #38bdf8;">
+            <span>🎯</span> <strong>Punto de Equilibrio Planta: 946 frascos/mes</strong> ($113,520 MXN)
           </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Tina Pasteurizadora Baño María (Inmersión 100L)</div>
-            <div class="clean-gallery-meta">Canastilla perforada con frascos • Vacío de 10–15 inHg a 85°C</div>
-          </div>
-        </div>
 
-        <!-- Photo 5: Molino Coloidal SUS316L -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/foto_molino_coloidal_industrial_sus316.jpg" alt="Molino Coloidal Sanitario SUS316L" class="clean-gallery-img">
+          <div class="formula-box">
+            Q_pe = Costos Fijos ($95,000) ÷ Margen Contribución Frasco ($100.50) = 946 frascos
           </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Molino Coloidal Industrial Sanitario SUS316L</div>
-            <div class="clean-gallery-meta">Gap micrométrico de 50µm • Molienda ultra-fina para Pasta Brava</div>
-          </div>
-        </div>
+          <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 14px;">
+            * Nota operativa: Con una línea de 1,200 frascos/hora, el punto de equilibrio mensual se cubre en <strong>menos de 1 hora de operación</strong>.
+          </p>
 
-        <!-- Photo 6: Envasadora Vertical VFFS -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/foto_envasadora_vffs_sachets_salsa.jpg" alt="Envasadora Vertical VFFS para Sachets" class="clean-gallery-img">
-          </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Envasadora Vertical Automática VFFS (Sachets $10)</div>
-            <div class="clean-gallery-meta">45–60 sobres/min • Formado, llenado y sellado continuo para OXXO</div>
-          </div>
+          <ul class="output-detail-list">
+            <li>
+              <span>Costo Variable Frasco 130g (escala):</span>
+              <strong style="color: #38bdf8;">$19.50 MXN (-28% vs piloto)</strong>
+            </li>
+            <li>
+              <span>Costo Variable Sachet 15g ($10 PVP):</span>
+              <strong style="color: #34d399;">$2.10 MXN / sachet</strong>
+            </li>
+            <li>
+              <span>Precio Distribuidor Sachet OXXO:</span>
+              <strong style="color: #fff;">$6.50 MXN (Margen: $4.40)</strong>
+            </li>
+            <li>
+              <span>Costos Fijos Mensuales (CF):</span>
+              <strong style="color: #38bdf8;">$95,000 MXN / mes</strong>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Renta nave industrial 64m²:</span>
+              <span>$18,000 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Nómina 4 operadores + 1 técnico:</span>
+              <span>$55,000 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Luz trifásica 220V + Gas + Caldera:</span>
+              <span>$14,000 MXN</span>
+            </li>
+            <li>
+              <span>&nbsp;&nbsp;• Mantenimiento y consumibles:</span>
+              <span>$8,000 MXN</span>
+            </li>
+            <li>
+              <span>Utilidad Neta Mensual (al 25% capacidad):</span>
+              <strong style="color: #34d399;">$2,510,000 MXN / mes</strong>
+            </li>
+            <li>
+              <span>Retorno de Inversión (Payback):</span>
+              <strong style="color: #34d399;">0.35 meses (~11 días)</strong>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Photo 7: Macro Dosificado & Baño María -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/dosificado_y_bano_maria_piloto_macro.jpg" alt="Detalle Macro de Dosificado y Baño María" class="clean-gallery-img">
-          </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Macro: Dosificado Volumétrico & Frasco Gourmet</div>
-            <div class="clean-gallery-meta">Llenado preciso de 130g de salsa ámbar e inmersión térmica</div>
-          </div>
-        </div>
-
-        <!-- Photo 8: Maquinaria Pesada Cerradora al Vacío -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/maquinaria_pesada_industrial_closeup.jpg" alt="Detalle Maquinaria Pesada Cierre al Vacío" class="clean-gallery-img">
-          </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Macro: Cerradora Twist-Off con Inyección de Vapor</div>
-            <div class="clean-gallery-meta">Cierre hermético instantáneo a 1,500 frascos/h grado alimentario</div>
-          </div>
-        </div>
-
-        <!-- Photo 9: Perspectiva Taller Piloto 16 m² -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/layout_taller_piloto_16m2_realista.jpg" alt="Perspectiva Taller Piloto 16 m²" class="clean-gallery-img">
-          </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Perspectiva Fotográfica: Taller Piloto (16 m²)</div>
-            <div class="clean-gallery-meta">Distribución en "U" • 4.0×4.0m • Capacidad 300–400 frascos/día</div>
-          </div>
-        </div>
-
-        <!-- Photo 10: Perspectiva Planta Industrial 64 m² -->
-        <div class="clean-gallery-item">
-          <div class="clean-gallery-img-wrap">
-            <img src="assets/images/produccion/layout_planta_industrial_64m2_realista.jpg" alt="Perspectiva Planta Industrial 64 m²" class="clean-gallery-img">
-          </div>
-          <div class="clean-gallery-caption">
-            <div class="clean-gallery-title">Perspectiva Fotográfica: Planta Industrial (64 m²)</div>
-            <div class="clean-gallery-meta">Nave HACCP • 8.0×8.0m • Capacidad >10,000 frascos + sachets/día</div>
-          </div>
-        </div>
+      <!-- Financial Pro-Forma Comparison Table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto Financiero</th>
+              <th>Etapa 1: Taller Piloto (16 m²)</th>
+              <th>Etapa 2: Planta Industrial (64 m²)</th>
+              <th>Impacto Financiero de la Escala</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Inversión Inicial Total (CAPEX)</strong></td>
+              <td style="color: #fb923c;">$134,000 MXN (~$6,800 USD)</td>
+              <td style="color: #38bdf8;">$875,100 MXN (~$44,500 USD)</td>
+              <td>Inversión 6.5× mayor con tecnología SUS316L</td>
+            </tr>
+            <tr>
+              <td><strong>Costo Variable Unitario (Frasco 130g)</strong></td>
+              <td>$27.00 MXN</td>
+              <td>$19.50 MXN</td>
+              <td><span class="tag-model">27.8% reducción de costo directo</span></td>
+            </tr>
+            <tr>
+              <td><strong>Margen de Contribución Unitario</strong></td>
+              <td>$93.00 MXN (77.5%)</td>
+              <td>$100.50 MXN (83.8%)</td>
+              <td>+$7.50 MXN de ganancia por frasco</td>
+            </tr>
+            <tr>
+              <td><strong>Punto de Equilibrio (Frascos / mes)</strong></td>
+              <td><strong>269 frascos / mes</strong></td>
+              <td><strong>946 frascos / mes</strong></td>
+              <td>Ambos con riesgo operativo mínimo (< 1 día prod)</td>
+            </tr>
+            <tr>
+              <td><strong>Punto de Equilibrio (Ventas en Pesos)</strong></td>
+              <td>$32,280 MXN / mes</td>
+              <td>$113,520 MXN / mes</td>
+              <td>Superable en las primeras 48 horas comerciales</td>
+            </tr>
+            <tr>
+              <td><strong>Costos Fijos Operativos Mensuales</strong></td>
+              <td>$25,000 MXN</td>
+              <td>$95,000 MXN</td>
+              <td>Incluye 5 salarios, energía trifásica y nave</td>
+            </tr>
+            <tr>
+              <td><strong>Utilidad Neta Proyectada Mensual</strong></td>
+              <td style="color: #34d399;"><strong>$425,000 MXN</strong></td>
+              <td style="color: #34d399;"><strong>$2,510,000 MXN</strong></td>
+              <td><span class="tag-model">5.9× mayor utilidad mensual</span></td>
+            </tr>
+            <tr>
+              <td><strong>Margen Neto Operativo</strong></td>
+              <td>59.0%</td>
+              <td>59.1%</td>
+              <td>Rentabilidad de alta gama sin mermas de proceso</td>
+            </tr>
+            <tr>
+              <td><strong>Período de Recuperación (Payback)</strong></td>
+              <td style="color: #34d399;"><strong>0.32 meses (~10 días)</strong></td>
+              <td style="color: #34d399;"><strong>0.35 meses (~11 días)</strong></td>
+              <td>Retorno ultra-acelerado debido al alto margen gourmet</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -1839,6 +2003,8 @@
           <h4>Vías de Manufactura</h4>
           <a href="#etapa-casera">🏭 Etapa 1: Taller Piloto Gastronómico (16 m² • $109,000 MXN)</a>
           <a href="#etapa-industrial">🏢 Etapa 2: Planta Continua Industrial (64 m² • $555,100 MXN)</a>
+          <a href="#seccion-output">📊 Capacidad & Output por Jornada</a>
+          <a href="#seccion-finanzas">💰 Punto de Equilibrio & ROI</a>
           <a href="index.html">🏺 Catálogo de Presentaciones & Envases</a>
         </div>
         <div class="footer-col">

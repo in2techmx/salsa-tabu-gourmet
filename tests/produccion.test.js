@@ -41,4 +41,11 @@ assert.ok(indexHtml.includes('produccion.html#etapa-casera'), 'index.html debe t
 assert.ok(indexHtml.includes('produccion.html#etapa-industrial'), 'index.html debe tener link 2 con thumbnail a #etapa-industrial');
 console.log('  [PASS] index.html contiene enlaces y thumbnails hacia ambas etapas de producción');
 
+// Test 7: produccion.html contains financial analysis, break-even, profitability and ROI
+assert.ok(produccionHtml.includes('id="seccion-finanzas"'), 'Debe contener sección #seccion-finanzas');
+assert.ok(produccionHtml.includes('Punto de Equilibrio'), 'Debe documentar Punto de Equilibrio');
+assert.ok(produccionHtml.includes('ROI') || produccionHtml.includes('Payback'), 'Debe documentar ROI / Payback');
+assert.ok(!produccionHtml.includes('id="galeria-maquinaria"'), 'La sección #galeria-maquinaria debe haber sido removida');
+console.log('  [PASS] Análisis financiero, Punto de Equilibrio y ROI verificados; galería removida');
+
 console.log('\n--- RESULTADO SUITE PRODUCCIÓN: TODAS LAS PRUEBAS EN VERDE (100% PASS) ---');
